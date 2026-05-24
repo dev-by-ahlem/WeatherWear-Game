@@ -160,3 +160,54 @@ body {
   /* Prevents horizontal scrollbar from appearing */
   overflow-x: hidden;
 }
+/* ==============================================
+   NAVBAR
+   ============================================== */
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.4s, border-color 0.3s;
+}
+ 
+.nav-logo {
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.nav-logo span { color: var(--accent); }
+ 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.theme-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 7px 16px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, color 0.2s;
+  font-family: Arial, sans-serif;
+}
+.theme-btn:hover { background: var(--border); }
+.navbar-icon {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
