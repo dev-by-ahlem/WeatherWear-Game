@@ -1,0 +1,162 @@
+/* ==============================================
+   WEATHER GAME — style.css
+   This is the MAIN stylesheet for the whole game
+   ============================================== */
+
+
+/* ---- RESET ----
+   Browsers add their own spacing by default (Chrome, Firefox etc)
+   This block removes ALL of that so we start from zero
+   * means "apply to every single element on the page" */
+*, *::before, *::after {
+
+  /* Makes width/height include padding & border — easier to calculate sizes */
+  box-sizing: border-box;
+
+  /* Remove all outside spacing around elements */
+  margin: 0;
+
+  /* Remove all inside spacing inside elements */
+  padding: 0;
+}
+
+
+/* ---- CSS VARIABLES — light mode (default) ----
+   Think of these like named colours/sizes we reuse everywhere
+   Instead of typing #BA7517 100 times, we just type var(--accent)
+   Change it once here = changes everywhere automatically */
+:root {
+
+  /* White — used for card backgrounds */
+  --surface: #FFFFFF;
+
+  /* Light beige — used for muted backgrounds like rule boxes */
+  --surface2: #EDEAE3;
+
+  /* Very light black — used for borders so they're subtle */
+  --border: rgba(0,0,0,0.09);
+
+  /* Almost black — main text colour */
+  --text: #1C1917;
+
+  /* Grey — secondary text like descriptions and labels */
+  --text2: #78716C;
+
+  /* Orange-gold — buttons, highlights, active elements */
+  --accent: #BA7517;
+
+  /* Green — correct answer colour */
+  --correct: #3B8C5A;
+
+  /* Light green — correct answer card background */
+  --correct-bg: #EAF3DE;
+
+  /* Red — wrong answer colour */
+  --wrong: #C0392B;
+
+  /* Light red — wrong answer card background */
+  --wrong-bg: #FCEBEB;
+
+  /* Light beige — skip feedback background */
+  --skip-bg: #F0EDE8;
+
+  /* 14px rounded corners — used on big cards */
+  --radius: 14px;
+
+  /* 9px rounded corners — used on smaller elements like buttons */
+  --radius-sm: 9px;
+
+  /* Warm off-white — the main page background colour */
+  --page-bg: #F7F4EF;
+
+  /* White — navbar background */
+  --nav-bg: #FFFFFF;
+
+  /* Semi-transparent white — weather banner sits over the GIF */
+  --banner-bg: rgba(255, 255, 255, 0.88);
+
+  /* Semi-transparent white — outfit cards sit over the GIF */
+  --card-bg: rgba(255, 255, 255, 0.9);
+
+  /* Semi-transparent white — end screen card */
+  --end-card-bg: rgba(255, 255, 255, 0.92);
+}
+
+
+/* ---- DARK MODE VARIABLES ----
+   This is an attribute selector.It selects any element that has an attribute 
+   called data-dark with the value "1" */
+[data-dark="1"] {
+
+  /* Dark brown — replaces white card backgrounds */
+  --surface: #1E1C1A;
+
+  /* Slightly lighter dark — replaces beige backgrounds */
+  --surface2: #2A2825;
+
+  /* Very light white — borders need to be lighter in dark mode */
+  --border: rgba(255,255,255,0.10);
+
+  /* Off-white — main text in dark mode */
+  --text: #F5F2ED;
+
+  /* Light grey — secondary text in dark mode */
+  --text2: #A09890;
+
+  /* Brighter orange — accent needs to be brighter to show on dark */
+  --accent: #E09A35;
+
+  /* Brighter green — correct colour in dark mode */
+  --correct: #5CB87A;
+
+  /* Dark green background — correct card in dark mode */
+  --correct-bg: #1A3325;
+
+  /* Brighter red — wrong colour in dark mode */
+  --wrong: #E05A5A;
+
+  /* Dark red background — wrong card in dark mode */
+  --wrong-bg: #3A1A1A;
+
+  /* Dark beige — skip background in dark mode */
+  --skip-bg: #2A2825;
+
+  /* Very dark — main page background in dark mode */
+  --page-bg: #141210;
+
+  /* Dark brown — navbar background in dark mode */
+  --nav-bg: #1E1C1A;
+
+  /* Semi-transparent dark — banner over GIF in dark mode */
+  --banner-bg: rgba(30, 28, 26, 0.88);
+
+  /* Semi-transparent dark — outfit cards over GIF in dark mode */
+  --card-bg: rgba(30, 28, 26, 0.90);
+
+  /* Semi-transparent dark — end screen card in dark mode */
+  --end-card-bg: rgba(30, 28, 26, 0.92);
+}
+
+
+/* ---- BODY ----
+   Styles the whole page container */
+body {
+
+  /* Sets the font for every text on the page */
+  font-family: Arial, sans-serif;
+
+  /* Makes the page at least as tall as the screen even if content is short */
+  min-height: 100vh;
+
+  /* Uses our variable — automatically switches in dark mode */
+  color: var(--text);
+
+  /* Uses our variable — automatically switches in dark mode */
+  background: var(--page-bg);
+
+  /* Smooth animation when switching dark/light mode */
+  transition: background 0.4s, color 0.3s;
+
+  /* Prevents horizontal scrollbar from appearing */
+  overflow-x: hidden;
+}
