@@ -35,9 +35,28 @@
     </div>
   </div>
  
- <!-- SCREEN 2 — Game (hidden at start) -->
-<div id="screen-game" class="screen" style="display:none">
-</div>
+ 
+  <!-- =============================================
+       SCREEN 2 — GAME SCREEN
+       ============================================= -->
+  <div id="screen-game" class="screen" style="display:none">
+    <div class="hud">
+      <div class="hud-chip">City <strong id="city-count">1</strong></div>
+      <div class="hud-timer" id="game-timer">45</div>
+      <div class="hud-chip">Score: <strong id="score-display">0</strong></div>
+    </div>
+    <div class="weather-banner">
+      <div class="banner-emoji" id="banner-emoji">☀️</div>
+      <div class="banner-info">
+        <div class="banner-city" id="banner-city">Loading...</div>
+        <div class="banner-desc" id="banner-desc">—</div>
+      </div>
+      <div class="banner-question">What should<br/>you wear?</div>
+    </div>
+    <div class="outfit-grid" id="outfit-grid"></div>
+    <div class="feedback-bar" id="feedback-bar" style="display:none"></div>
+    <div class="progress-dots" id="progress-dots"></div>
+  </div>
 
 <!-- SCREEN 3 — End (hidden at start) -->
 <div id="screen-end" class="screen" style="display:none">
