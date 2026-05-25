@@ -115,7 +115,19 @@ const OUTFITS = {
 const GAME_DURATION   = 45;  // total seconds per game
 const CARDS_PER_ROUND = 9;   // 9 cards shown each round (3 rows x 3 columns)
 
- 
+ // ==============================================
+//  GAME STATE
+// ==============================================
+let score         = 0;
+let cityCount     = 0;
+let results       = [];
+let timeLeft      = GAME_DURATION;
+let gameTimerID   = null;
+let roundTimerID  = null;
+let roundTimeLeft = 3;
+let answered      = false;
+let currentCity   = null;
+let correctOutfit = null;
 
 // ==============================================
 //  DARK / LIGHT MODE TOGGLE
