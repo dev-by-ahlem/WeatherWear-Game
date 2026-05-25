@@ -130,6 +130,28 @@ let currentCity   = null;
 let correctOutfit = null;
 
 // ==============================================
+//  DOM REFERENCES
+// ==============================================
+const screenStart      = document.getElementById('screen-start');
+const screenGame       = document.getElementById('screen-game');
+const screenEnd        = document.getElementById('screen-end');
+const highscoreDisplay = document.getElementById('highscore-display');
+const cityCountEl      = document.getElementById('city-count');
+const gameTimerEl      = document.getElementById('game-timer');
+const scoreDisplay     = document.getElementById('score-display');
+const bannerEmoji      = document.getElementById('banner-emoji');
+const bannerCity       = document.getElementById('banner-city');
+const bannerDesc       = document.getElementById('banner-desc');
+const outfitGrid       = document.getElementById('outfit-grid');
+const feedbackBar      = document.getElementById('feedback-bar');
+const progressDots     = document.getElementById('progress-dots');
+const endBigEmoji      = document.getElementById('end-big-emoji');
+const endScore         = document.getElementById('end-score');
+const endMessage       = document.getElementById('end-message');
+const newHighscore     = document.getElementById('new-highscore');
+const endDotsRow       = document.getElementById('end-dots-row');
+
+// ==============================================
 //  DARK / LIGHT MODE TOGGLE
 // ==============================================
 const themeToggle = document.getElementById('theme-toggle');
