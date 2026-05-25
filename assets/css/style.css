@@ -283,3 +283,138 @@ body {
 }
 .start-btn:hover { opacity: 0.88; }
 .highscore-row { font-size: 13px; color: var(--text2); }
+
+ 
+/* ==============================================
+   SCREEN 2 — GAME HUD
+   ============================================== */
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.hud-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  font-size: 13px;
+  color: var(--text);
+  transition: background 0.4s, border-color 0.3s;
+}
+.hud-timer {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.hud-timer.urgent { background: var(--wrong); }
+ 
+ 
+/* ==============================================
+   WEATHER BANNER
+   ============================================== */
+.weather-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--banner-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+  transition: background 0.4s, border-color 0.3s;
+}
+.banner-emoji  { font-size: 40px; line-height: 1; flex-shrink: 0; }
+.banner-city   { font-size: 16px; font-weight: bold; color: var(--text); }
+.banner-desc   { font-size: 12px; color: var(--text2); margin-top: 4px; }
+.banner-question {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--accent);
+  text-align: right;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+ 
+ 
+/* ==============================================
+   OUTFIT CARDS
+   ============================================== */
+.outfit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.outfit-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.2s, background 0.2s;
+}
+.outfit-card:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: var(--accent);
+}
+.outfit-card.correct { border-color: var(--correct); background: var(--correct-bg); }
+.outfit-card.wrong   { border-color: var(--wrong);   background: var(--wrong-bg); }
+.outfit-card.disabled { cursor: default; pointer-events: none; opacity: 0.8; }
+ 
+.card-icon { font-size: 28px; margin-bottom: 6px; display: block; }
+.card-name { font-size: 11px; font-weight: bold; color: var(--text); line-height: 1.3; }
+.card-tag  { font-size: 10px; color: var(--text2); margin-top: 3px; }
+ 
+ 
+/* ==============================================
+   FEEDBACK BAR
+   ============================================== */
+.feedback-bar {
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.feedback-bar.correct-fb { background: var(--correct-bg); color: var(--correct); border: 1px solid var(--correct); }
+.feedback-bar.wrong-fb   { background: var(--wrong-bg);   color: var(--wrong);   border: 1px solid var(--wrong); }
+.feedback-bar.skip-fb    { background: var(--skip-bg);    color: var(--text2);   border: 1px solid var(--border); }
+ 
+ 
+/* ==============================================
+   PROGRESS DOTS
+   ============================================== */
+.progress-dots {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  min-height: 8px;
+  margin-bottom: 4px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.dot.correct { background: var(--correct); }
+.dot.wrong   { background: var(--wrong); }
+.dot.skip    { background: var(--text2); }
+.dot.active  { background: var(--accent); }
