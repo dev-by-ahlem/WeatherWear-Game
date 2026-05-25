@@ -110,6 +110,14 @@ const OUTFITS = {
 };
 
 // ==============================================
+//  GAME CONSTANTS
+// ==============================================
+const GAME_DURATION   = 45;  // total seconds per game
+const CARDS_PER_ROUND = 9;   // 9 cards shown each round (3 rows x 3 columns)
+
+ 
+
+// ==============================================
 //  DARK / LIGHT MODE TOGGLE
 // ==============================================
 const themeToggle = document.getElementById('theme-toggle');
