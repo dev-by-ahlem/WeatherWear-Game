@@ -10,7 +10,11 @@ themeToggle.addEventListener('click', () => {
   themeToggle.textContent = isDark ? '☀️ Light' : '🌙 Dark';
 });
  
- 
+// ---- GRAB THE 3 SCREENS ----
+const screenStart = document.getElementById('screen-start');
+const screenGame  = document.getElementById('screen-game');
+const screenEnd   = document.getElementById('screen-end');
+
 // ==============================================
 //  SCREEN SWITCHERS (Section 3)
 //  Clean functions to show/hide the 3 screens
