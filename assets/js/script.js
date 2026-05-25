@@ -50,6 +50,66 @@ const CITIES = [
 ];
 
 // ==============================================
+//  OUTFIT DATA
+//  Each outfit now has a unique 'img' emoji/icon
+//  9 outfits per weather type — no repeats
+// ==============================================
+const OUTFITS = {
+ 
+  // ☀️ HOT — 9 unique outfits
+  hot: [
+    { icon: "🩳", name: "Shorts",             tag: "Hot weather ☀️" },
+    { icon: "👗", name: "Summer dress",        tag: "Hot weather ☀️" },
+    { icon: "🩱", name: "Bodysuit",            tag: "Hot weather ☀️" },
+    { icon: "👚", name: "Crop top & skirt",    tag: "Hot weather ☀️" },
+    { icon: "🥿", name: "Sandals & vest",      tag: "Hot weather ☀️" },
+    { icon: "🩴", name: "Flip flops",          tag: "Hot weather ☀️" },
+    { icon: "👒", name: "Sun hat & dress",     tag: "Hot weather ☀️" },
+    { icon: "👙", name: "Swimwear",            tag: "Hot weather ☀️" },
+    { icon: "🧢", name: "Cap & light shirt",   tag: "Hot weather ☀️" },
+  ],
+ 
+  // ❄️ COLD — 9 unique outfits
+  cold: [
+    { icon: "🧥", name: "Winter coat",         tag: "Cold weather ❄️" },
+    { icon: "🧤", name: "Gloves & jacket",     tag: "Cold weather ❄️" },
+    { icon: "🧣", name: "Scarf & wool coat",   tag: "Cold weather ❄️" },
+    { icon: "🥾", name: "Snow boots & parka",  tag: "Cold weather ❄️" },
+    { icon: "🧦", name: "Thick socks & coat",  tag: "Cold weather ❄️" },
+    { icon: "👢", name: "Knee boots & coat",   tag: "Cold weather ❄️" },
+    { icon: "🎿", name: "Thermal layers",      tag: "Cold weather ❄️" },
+    { icon: "assets/images/img1.png", name: "Knit jumper & scarf", tag: "Cold weather ❄️" },
+    { icon: "🪖", name: "Fur hat & puffer",    tag: "Cold weather ❄️" },
+  ],
+ 
+  // 🌧️ RAIN — 9 unique outfits
+  rain: [
+    { icon: "🌂", name: "Umbrella & mac",      tag: "Rainy day 🌧️" },
+    { icon: "☂️", name: "Brolly & coat",       tag: "Rainy day 🌧️" },
+    { icon: "👢", name: "Wellies & raincoat",  tag: "Rainy day 🌧️" },
+    { icon: "🥾", name: "Waterproof boots",    tag: "Rainy day 🌧️" },
+    { icon: "🧥", name: "Trench coat",         tag: "Rainy day 🌧️" },
+    { icon: "🩱", name: "Poncho",              tag: "Rainy day 🌧️" },
+    { icon: "🎒", name: "Waterproof jacket",   tag: "Rainy day 🌧️" },
+    { icon: "👖", name: "Waterproof trousers", tag: "Rainy day 🌧️" },
+    { icon: "🧤", name: "Gloves & rain hat",   tag: "Rainy day 🌧️" },
+  ],
+ 
+  // ⛄ SNOW — 9 unique outfits
+  snow: [
+    { icon: "🧥", name: "Snowsuit & boots",    tag: "Snowy day ⛄" },
+    { icon: "🧤", name: "Mittens & puffer",    tag: "Snowy day ⛄" },
+    { icon: "⛷️", name: "Ski jacket",          tag: "Snowy day ⛄" },
+    { icon: "🧣", name: "Puffer & scarf",      tag: "Snowy day ⛄" },
+    { icon: "🧦", name: "Thermal socks",       tag: "Snowy day ⛄" },
+    { icon: "👢", name: "Snow boots",          tag: "Snowy day ⛄" },
+    { icon: "🎿", name: "Ski suit & goggles",  tag: "Snowy day ⛄" },
+    { icon: "🧶", name: "Wool hat & layers",   tag: "Snowy day ⛄" },
+    { icon: "🪖", name: "Fur coat & hat",      tag: "Snowy day ⛄" },
+  ],
+};
+
+// ==============================================
 //  DARK / LIGHT MODE TOGGLE
 // ==============================================
 const themeToggle = document.getElementById('theme-toggle');
@@ -95,3 +155,34 @@ const startBtn = document.getElementById('start-btn');
 startBtn.addEventListener('click', () => {
   showGame();
 });
+// ==============================================
+//  GAME TIMER — counts down every second
+// ==============================================
+
+// Store how many seconds the player has left
+let timeLeft = 45;
+
+// Get the timer circle element from the HTML
+const timerDisplay = document.getElementById('game-timer');
+
+// Create a repeating function that runs every 1000ms (1 second)
+const timerInterval = setInterval(() => {
+
+  // Reduce the time by 1 second
+  timeLeft--;
+
+  // Update the number shown inside the timer circle
+  timerDisplay.textContent = timeLeft;
+
+  // If the time is 10 seconds or less → make the timer turn red
+  if (timeLeft <= 10) {
+    timerDisplay.classList.add('urgent'); 
+  }
+
+  // If the time reaches 0 → stop the timer completely
+  if (timeLeft <= 0) {
+    clearInterval(timerInterval); // stop the countdown
+    endGame();                    // go to the end screen
+  }
+
+}, 1000); // 1000ms = 1 second
