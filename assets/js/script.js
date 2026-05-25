@@ -36,3 +36,11 @@ function showEnd() {
   screenGame.style.display  = 'none';
   screenEnd.style.display   = 'block';
 }
+
+// Grab the Start button
+const startBtn = document.getElementById('start-btn');
+
+// When Start is clicked → call the function
+startBtn.addEventListener('click', () => {
+  showGame();
+});
