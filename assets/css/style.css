@@ -1,165 +1,71 @@
 /* ==============================================
    WEATHER GAME — style.css
-   This is the MAIN stylesheet for the whole game
    ============================================== */
 
 
-/* ---- RESET ----
-   Browsers add their own spacing by default (Chrome, Firefox etc)
-   This block removes ALL of that so we start from zero
-   * means "apply to every single element on the page" */
+/* ---- RESET ---- */
 *, *::before, *::after {
-
-  /* Makes width/height include padding & border — easier to calculate sizes */
   box-sizing: border-box;
-
-  /* Remove all outside spacing around elements */
   margin: 0;
-
-  /* Remove all inside spacing inside elements */
   padding: 0;
 }
 
 
-/* ---- CSS VARIABLES — light mode (default) ----
-   Think of these like named colours/sizes we reuse everywhere
-   Instead of typing #BA7517 100 times, we just type var(--accent)
-   Change it once here = changes everywhere automatically */
+/* ---- CSS VARIABLES — light mode (default) ---- */
 :root {
-
-  /* White — used for card backgrounds */
-  --surface: #FFFFFF;
-
-  /* Light beige — used for muted backgrounds like rule boxes */
-  --surface2: #EDEAE3;
-
-  /* Very light black — used for borders so they're subtle */
-  --border: rgba(0,0,0,0.09);
-
-  /* Almost black — main text colour */
-  --text: #1C1917;
-
-  /* Grey — secondary text like descriptions and labels */
-  --text2: #78716C;
-
-  /* Orange-gold — buttons, highlights, active elements */
-  --accent: #BA7517;
-
-  /* Green — correct answer colour */
-  --correct: #3B8C5A;
-
-  /* Light green — correct answer card background */
-  --correct-bg: #EAF3DE;
-
-  /* Red — wrong answer colour */
-  --wrong: #C0392B;
-
-  /* Light red — wrong answer card background */
-  --wrong-bg: #FCEBEB;
-
-  /* Light beige — skip feedback background */
-  --skip-bg: #F0EDE8;
-
-  /* 14px rounded corners — used on big cards */
-  --radius: 14px;
-
-  /* 9px rounded corners — used on smaller elements like buttons */
-  --radius-sm: 9px;
-
-  /* Warm off-white — the main page background colour */
-  --page-bg: #F7F4EF;
-
-  /* White — navbar background */
-  --nav-bg: #FFFFFF;
-
-  /* Semi-transparent white — weather banner sits over the GIF */
-  --banner-bg: rgba(255, 255, 255, 0.88);
-
-  /* Semi-transparent white — outfit cards sit over the GIF */
-  --card-bg: rgba(255, 255, 255, 0.9);
-
-  /* Semi-transparent white — end screen card */
+  --surface:     #FFFFFF;
+  --surface2:    #EDEAE3;
+  --border:      rgba(0,0,0,0.09);
+  --text:        #1C1917;
+  --text2:       #78716C;
+  --accent:      #BA7517;
+  --correct:     #3B8C5A;
+  --correct-bg:  #EAF3DE;
+  --wrong:       #C0392B;
+  --wrong-bg:    #FCEBEB;
+  --skip-bg:     #F0EDE8;
+  --radius:      14px;
+  --radius-sm:   9px;
+  --page-bg:     #F7F4EF;
+  --nav-bg:      #FFFFFF;
+  --banner-bg:   rgba(255, 255, 255, 0.88);
+  --card-bg:     rgba(255, 255, 255, 0.9);
   --end-card-bg: rgba(255, 255, 255, 0.92);
 }
 
 
-/* ---- DARK MODE VARIABLES ----
-   This is an attribute selector.It selects any element that has an attribute 
-   called data-dark with the value "1" */
+/* ---- DARK MODE VARIABLES ---- */
 [data-dark="1"] {
-
-  /* Dark brown — replaces white card backgrounds */
-  --surface: #1E1C1A;
-
-  /* Slightly lighter dark — replaces beige backgrounds */
-  --surface2: #2A2825;
-
-  /* Very light white — borders need to be lighter in dark mode */
-  --border: rgba(255,255,255,0.10);
-
-  /* Off-white — main text in dark mode */
-  --text: #F5F2ED;
-
-  /* Light grey — secondary text in dark mode */
-  --text2: #A09890;
-
-  /* Brighter orange — accent needs to be brighter to show on dark */
-  --accent: #E09A35;
-
-  /* Brighter green — correct colour in dark mode */
-  --correct: #5CB87A;
-
-  /* Dark green background — correct card in dark mode */
-  --correct-bg: #1A3325;
-
-  /* Brighter red — wrong colour in dark mode */
-  --wrong: #E05A5A;
-
-  /* Dark red background — wrong card in dark mode */
-  --wrong-bg: #3A1A1A;
-
-  /* Dark beige — skip background in dark mode */
-  --skip-bg: #2A2825;
-
-  /* Very dark — main page background in dark mode */
-  --page-bg: #141210;
-
-  /* Dark brown — navbar background in dark mode */
-  --nav-bg: #1E1C1A;
-
-  /* Semi-transparent dark — banner over GIF in dark mode */
-  --banner-bg: rgba(30, 28, 26, 0.88);
-
-  /* Semi-transparent dark — outfit cards over GIF in dark mode */
-  --card-bg: rgba(30, 28, 26, 0.90);
-
-  /* Semi-transparent dark — end screen card in dark mode */
+  --surface:     #1E1C1A;
+  --surface2:    #2A2825;
+  --border:      rgba(255,255,255,0.10);
+  --text:        #F5F2ED;
+  --text2:       #A09890;
+  --accent:      #E09A35;
+  --correct:     #5CB87A;
+  --correct-bg:  #1A3325;
+  --wrong:       #E05A5A;
+  --wrong-bg:    #3A1A1A;
+  --skip-bg:     #2A2825;
+  --page-bg:     #141210;
+  --nav-bg:      #1E1C1A;
+  --banner-bg:   rgba(30, 28, 26, 0.88);
+  --card-bg:     rgba(30, 28, 26, 0.90);
   --end-card-bg: rgba(30, 28, 26, 0.92);
 }
 
 
-/* ---- BODY ----
-   Styles the whole page container */
+/* ---- BODY ---- */
 body {
-
-  /* Sets the font for every text on the page */
   font-family: Arial, sans-serif;
-
-  /* Makes the page at least as tall as the screen even if content is short */
   min-height: 100vh;
-
-  /* Uses our variable — automatically switches in dark mode */
   color: var(--text);
-
-  /* Uses our variable — automatically switches in dark mode */
   background: var(--page-bg);
-
-  /* Smooth animation when switching dark/light mode */
   transition: background 0.4s, color 0.3s;
-
-  /* Prevents horizontal scrollbar from appearing */
   overflow-x: hidden;
 }
+
+
 /* ==============================================
    NAVBAR
    ============================================== */
@@ -175,7 +81,7 @@ body {
   z-index: 100;
   transition: background 0.4s, border-color 0.3s;
 }
- 
+
 .nav-logo {
   font-size: 17px;
   font-weight: bold;
@@ -183,13 +89,13 @@ body {
   letter-spacing: -0.3px;
 }
 .nav-logo span { color: var(--accent); }
- 
+
 .nav-right {
   display: flex;
   align-items: center;
   gap: 10px;
 }
- 
+
 .theme-btn {
   background: var(--surface2);
   border: 1px solid var(--border);
@@ -205,14 +111,46 @@ body {
   font-family: Arial, sans-serif;
 }
 .theme-btn:hover { background: var(--border); }
-.navbar-icon {
-  width: 40px;
-  height: 40px;
-  vertical-align: middle;
-  margin-right: 8px;
+
+
+/* ==============================================
+   GIF BACKGROUND CLASSES
+   ============================================== */
+body.weather-hot,
+body.weather-cold,
+body.weather-rain,
+body.weather-snow {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
- 
+body.weather-hot::before,
+body.weather-cold::before,
+body.weather-rain::before,
+body.weather-snow::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-dark="1"] body.weather-hot::before,
+[data-dark="1"] body.weather-cold::before,
+[data-dark="1"] body.weather-rain::before,
+[data-dark="1"] body.weather-snow::before {
+  background: rgba(0, 0, 0, 0.50);
+}
+
+body.weather-hot  { background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXdjZXl5dGthMDV6eTd1OWtqbGttcjlvbHp3MWJ1dGd5ZW5vcnd3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6nUPnMaC9EsPJrNS/giphy.gif'); }
+body.weather-cold { background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHpncnExNWJ6dDcwMW5nZzE1N3F3dzh2azFuejdyMmVpMHo0OHNkZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26BRuo6sLetdllPAQ/giphy.gif'); }
+body.weather-rain { background-image: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWhiNmQ5cjBkMGR4djBxZnMwemhsd2U1cmNmNW84MnNqaGZocm44NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlBO7eyXzSZkJri/giphy.gif'); }
+body.weather-snow { background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVsMWp1YzV4ZWx0dDR4enhoNGQxMm1idHl4ZWJxZGl2eDdxMXlmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Wn74RUT0vjnoU98Hnt/giphy.gif'); }
+
+
 /* ==============================================
    SCREEN WRAPPER
    ============================================== */
@@ -223,8 +161,8 @@ body {
   position: relative;
   z-index: 1;
 }
- 
- 
+
+
 /* ==============================================
    SCREEN 1 — START CARD
    ============================================== */
@@ -284,7 +222,7 @@ body {
 .start-btn:hover { opacity: 0.88; }
 .highscore-row { font-size: 13px; color: var(--text2); }
 
- 
+
 /* ==============================================
    SCREEN 2 — GAME HUD
    ============================================== */
@@ -318,8 +256,8 @@ body {
   flex-shrink: 0;
 }
 .hud-timer.urgent { background: var(--wrong); }
- 
- 
+
+
 /* ==============================================
    WEATHER BANNER
    ============================================== */
@@ -347,8 +285,8 @@ body {
   line-height: 1.6;
   flex-shrink: 0;
 }
- 
- 
+
+
 /* ==============================================
    OUTFIT CARDS
    ============================================== */
@@ -367,5 +305,86 @@ body {
   cursor: pointer;
   transition: transform 0.15s, border-color 0.2s, background 0.2s;
 }
+.outfit-card:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: var(--accent);
+}
+.outfit-card.correct { border-color: var(--correct); background: var(--correct-bg); }
+.outfit-card.wrong   { border-color: var(--wrong);   background: var(--wrong-bg); }
+.outfit-card.disabled { cursor: default; pointer-events: none; opacity: 0.8; }
 
- 
+.card-icon { font-size: 28px; margin-bottom: 6px; display: block; }
+.card-name { font-size: 11px; font-weight: bold; color: var(--text); line-height: 1.3; }
+.card-tag  { font-size: 10px; color: var(--text2); margin-top: 3px; }
+
+
+/* ==============================================
+   FEEDBACK BAR
+   ============================================== */
+.feedback-bar {
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.feedback-bar.correct-fb { background: var(--correct-bg); color: var(--correct); border: 1px solid var(--correct); }
+.feedback-bar.wrong-fb   { background: var(--wrong-bg);   color: var(--wrong);   border: 1px solid var(--wrong); }
+.feedback-bar.skip-fb    { background: var(--skip-bg);    color: var(--text2);   border: 1px solid var(--border); }
+
+
+/* ==============================================
+   PROGRESS DOTS
+   ============================================== */
+.progress-dots {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  min-height: 8px;
+  margin-bottom: 4px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.dot.correct { background: var(--correct); }
+.dot.wrong   { background: var(--wrong); }
+.dot.skip    { background: var(--text2); }
+.dot.active  { background: var(--accent); }
+
+
+/* ==============================================
+   GAME SCREEN ACTION BUTTONS
+   Back (←) and Restart (🔄) shown during game
+   ============================================== */
+.game-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.game-action-btn {
+  padding: 8px 20px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+.game-action-btn:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+
