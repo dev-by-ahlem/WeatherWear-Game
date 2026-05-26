@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<!-- set the dark mode to zero by default -->
 <html lang="en" data-dark="0">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WeatherGame 🌍</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>WeatherWear Game 🌍</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-      <!-- =============================================
+
+  <!-- =============================================
        NAVBAR
        ============================================= -->
   <nav id="navbar">
-    <div class="nav-logo"> <img src="assets/images/logo.png" alt="Weather Wear Game Icon" class="navbar-icon"><span> W</span>eather<span>W</span>ear<span> Game</span> </div>
+    <div class="nav-logo"><span>WeatherWear</span> Game 🌍</div>
     <div class="nav-right">
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark</button>
     </div>
-  </nav> 
+  </nav>
+
   <!-- =============================================
        SCREEN 1 — START SCREEN
        ============================================= -->
@@ -34,8 +35,7 @@
       <div class="highscore-row">🏅 Best score: <strong id="highscore-display">0</strong></div>
     </div>
   </div>
- 
- 
+
   <!-- =============================================
        SCREEN 2 — GAME SCREEN
        ============================================= -->
@@ -56,8 +56,15 @@
     <div class="outfit-grid" id="outfit-grid"></div>
     <div class="feedback-bar" id="feedback-bar" style="display:none"></div>
     <div class="progress-dots" id="progress-dots"></div>
+
+    <!-- Game action buttons — back to home and restart -->
+    <div class="game-actions">
+      <button class="game-action-btn" id="back-btn">← Home</button>
+      <button class="game-action-btn" id="restart-btn">🔄 Restart</button>
+    </div>
   </div>
- <!-- =============================================
+
+  <!-- =============================================
        SCREEN 3 — END SCREEN
        ============================================= -->
   <div id="screen-end" class="screen" style="display:none">
@@ -74,7 +81,7 @@
       </div>
     </div>
   </div>
-  <!-- Connect html to js -->
-   <script src="assets/js/script.js"></script>
-    </body>
-    </html>
+
+  <script src="app.js"></script>
+</body>
+</html>
