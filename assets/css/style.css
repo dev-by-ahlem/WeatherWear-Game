@@ -388,3 +388,90 @@ body.weather-snow { background-image: url('https://media0.giphy.com/media/v1.Y2l
 }
 
 
+/* ==============================================
+   SCREEN 3 — END SCREEN
+   ============================================== */
+#screen-end { text-align: center; padding-top: 20px; }
+
+.end-card {
+  background: var(--end-card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  backdrop-filter: blur(4px);
+  transition: background 0.4s, border-color 0.3s;
+}
+.end-big-emoji   { font-size: 64px; margin-bottom: 10px; display: block; }
+.end-score       { font-size: 56px; font-weight: bold; color: var(--text); line-height: 1; }
+.end-score-label { font-size: 14px; color: var(--text2); margin-bottom: 8px; }
+.end-message     { font-size: 18px; font-weight: bold; color: var(--accent); margin-bottom: 12px; }
+
+.new-highscore {
+  display: inline-block;
+  background: #FFF8DC;
+  border: 1px solid #D4AF37;
+  color: #8B6914;
+  border-radius: 99px;
+  padding: 5px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+[data-dark="1"] .new-highscore {
+  background: #3A2D00;
+  border-color: #8B6914;
+  color: #E09A35;
+}
+
+.end-dots-row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.end-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.end-dot.correct { background: var(--correct-bg); color: var(--correct); }
+.end-dot.wrong   { background: var(--wrong-bg);   color: var(--wrong); }
+.end-dot.skip    { background: var(--skip-bg);     color: var(--text2); }
+
+.end-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+.btn-primary {
+  padding: 12px 28px;
+  border-radius: 99px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: Arial, sans-serif;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-secondary {
+  padding: 12px 28px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background 0.2s;
+}
+.btn-secondary:hover { filter: brightness(0.95); }
+
+
