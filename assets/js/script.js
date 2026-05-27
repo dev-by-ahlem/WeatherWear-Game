@@ -1,133 +1,123 @@
 // ==============================================
-//  WEATHERWEAR GAME — app.js
+//  WEATHERWEAR GAME — script.js
 // ==============================================
- 
- 
+
+
 // ==============================================
-//  CITY DATA
+//  CITY LIST
 // ==============================================
 const CITIES = [
- 
-  // --- HOT cities ---
-  { name: "Dubai",       country: "UAE 🇦🇪",         weather: "hot",  emoji: "☀️",  temp: 40, desc: "Blazing sun" },
-  { name: "Cairo",       country: "Egypt 🇪🇬",        weather: "hot",  emoji: "🌞",  temp: 37, desc: "Very hot & sunny" },
-  { name: "Mumbai",      country: "India 🇮🇳",        weather: "hot",  emoji: "☀️",  temp: 33, desc: "Warm and humid" },
-  { name: "Bangkok",     country: "Thailand 🇹🇭",     weather: "hot",  emoji: "🌞",  temp: 35, desc: "Hot and humid" },
-  { name: "Riyadh",      country: "Saudi Arabia 🇸🇦", weather: "hot",  emoji: "☀️",  temp: 42, desc: "Extreme heat" },
-  { name: "Lagos",       country: "Nigeria 🇳🇬",      weather: "hot",  emoji: "🌤️", temp: 31, desc: "Hot and tropical" },
-  { name: "Doha",        country: "Qatar 🇶🇦",        weather: "hot",  emoji: "🌞",  temp: 39, desc: "Scorching heat" },
-  { name: "Miami",       country: "USA 🇺🇸",          weather: "hot",  emoji: "☀️",  temp: 30, desc: "Sunny and warm" },
-  { name: "Barcelona",   country: "Spain 🇪🇸",        weather: "hot",  emoji: "🌤️", temp: 28, desc: "Warm and sunny" },
-  { name: "Tunis",       country: "Tunisia 🇹🇳",      weather: "hot",  emoji: "☀️",  temp: 34, desc: "Hot Mediterranean sun" },
-  { name: "Karachi",     country: "Pakistan 🇵🇰",     weather: "hot",  emoji: "🌞",  temp: 36, desc: "Hot and humid" },
- 
-  // --- COLD cities ---
-  { name: "Moscow",      country: "Russia 🇷🇺",       weather: "cold", emoji: "🌨️", temp: -5,  desc: "Freezing cold" },
-  { name: "Oslo",        country: "Norway 🇳🇴",       weather: "cold", emoji: "❄️",  temp: -2,  desc: "Very cold" },
-  { name: "Helsinki",    country: "Finland 🇫🇮",      weather: "cold", emoji: "🌨️", temp: -3,  desc: "Bitter cold" },
-  { name: "Reykjavik",   country: "Iceland 🇮🇸",      weather: "cold", emoji: "❄️",  temp: 3,   desc: "Cold and windy" },
-  { name: "Ulaanbaatar", country: "Mongolia 🇲🇳",     weather: "cold", emoji: "🌨️", temp: -10, desc: "Extreme cold" },
-  { name: "Anchorage",   country: "USA 🇺🇸",          weather: "cold", emoji: "🌨️", temp: -4,  desc: "Cold and grey" },
-  { name: "Stockholm",   country: "Sweden 🇸🇪",       weather: "cold", emoji: "❄️",  temp: 1,   desc: "Cold and icy" },
- 
-  // --- RAIN cities ---
-  { name: "Manchester",  country: "UK 🇬🇧",           weather: "rain", emoji: "🌧️", temp: 10, desc: "Pouring rain" },
-  { name: "Seattle",     country: "USA 🇺🇸",          weather: "rain", emoji: "🌧️", temp: 12, desc: "Drizzly and grey" },
-  { name: "Bergen",      country: "Norway 🇳🇴",       weather: "rain", emoji: "🌧️", temp: 9,  desc: "Rainy as always!" },
-  { name: "Dhaka",       country: "Bangladesh 🇧🇩",   weather: "rain", emoji: "🌧️", temp: 28, desc: "Monsoon rain" },
-  { name: "London",      country: "UK 🇬🇧",           weather: "rain", emoji: "🌧️", temp: 11, desc: "Typical drizzle" },
-  { name: "Dublin",      country: "Ireland 🇮🇪",      weather: "rain", emoji: "🌧️", temp: 10, desc: "Wet and grey" },
-  { name: "Nairobi",     country: "Kenya 🇰🇪",        weather: "rain", emoji: "⛈️", temp: 19, desc: "Afternoon showers" },
-  { name: "Lahore",      country: "Pakistan 🇵🇰",     weather: "rain", emoji: "🌧️", temp: 25, desc: "Monsoon season" },
- 
-  // --- SNOW cities ---
-  { name: "Tromsø",      country: "Norway 🇳🇴",       weather: "snow", emoji: "❄️",  temp: -8,  desc: "Heavy snowfall" },
-  { name: "Rovaniemi",   country: "Finland 🇫🇮",      weather: "snow", emoji: "⛄",  temp: -12, desc: "Deep snow" },
-  { name: "Sapporo",     country: "Japan 🇯🇵",        weather: "snow", emoji: "❄️",  temp: -5,  desc: "Heavy snowfall" },
-  { name: "Harbin",      country: "China 🇨🇳",        weather: "snow", emoji: "⛄",  temp: -18, desc: "Ice city!" },
-  { name: "Banff",       country: "Canada 🇨🇦",       weather: "snow", emoji: "🌨️", temp: -10, desc: "Mountain blizzard" },
-  { name: "Yakutsk",     country: "Russia 🇷🇺",       weather: "snow", emoji: "❄️",  temp: -30, desc: "Extreme blizzard" },
+  { name: "Dubai",        country: "UAE 🇦🇪",          lat: 25.2, lon: 55.3   },
+  { name: "Cairo",        country: "Egypt 🇪🇬",         lat: 30.1, lon: 31.2   },
+  { name: "Mumbai",       country: "India 🇮🇳",         lat: 19.1, lon: 72.9   },
+  { name: "Bangkok",      country: "Thailand 🇹🇭",      lat: 13.8, lon: 100.5  },
+  { name: "Riyadh",       country: "Saudi Arabia 🇸🇦",  lat: 24.7, lon: 46.7   },
+  { name: "Lagos",        country: "Nigeria 🇳🇬",       lat: 6.5,  lon: 3.4    },
+  { name: "Doha",         country: "Qatar 🇶🇦",         lat: 25.3, lon: 51.5   },
+  { name: "Miami",        country: "USA 🇺🇸",           lat: 25.8, lon: -80.2  },
+  { name: "Barcelona",    country: "Spain 🇪🇸",         lat: 41.4, lon: 2.2    },
+  { name: "Tunis",        country: "Tunisia 🇹🇳",       lat: 36.8, lon: 10.2   },
+  { name: "Karachi",      country: "Pakistan 🇵🇰",      lat: 24.9, lon: 67.0   },
+  { name: "Moscow",       country: "Russia 🇷🇺",        lat: 55.8, lon: 37.6   },
+  { name: "Oslo",         country: "Norway 🇳🇴",        lat: 59.9, lon: 10.7   },
+  { name: "Helsinki",     country: "Finland 🇫🇮",       lat: 60.2, lon: 25.0   },
+  { name: "Reykjavik",    country: "Iceland 🇮🇸",       lat: 64.1, lon: -21.9  },
+  { name: "Ulaanbaatar",  country: "Mongolia 🇲🇳",      lat: 47.9, lon: 106.9  },
+  { name: "Anchorage",    country: "USA 🇺🇸",           lat: 61.2, lon: -149.9 },
+  { name: "Stockholm",    country: "Sweden 🇸🇪",        lat: 59.3, lon: 18.1   },
+  { name: "Manchester",   country: "UK 🇬🇧",            lat: 53.5, lon: -2.2   },
+  { name: "Seattle",      country: "USA 🇺🇸",           lat: 47.6, lon: -122.3 },
+  { name: "Bergen",       country: "Norway 🇳🇴",        lat: 60.4, lon: 5.3    },
+  { name: "Dhaka",        country: "Bangladesh 🇧🇩",    lat: 23.8, lon: 90.4   },
+  { name: "London",       country: "UK 🇬🇧",            lat: 51.5, lon: -0.1   },
+  { name: "Dublin",       country: "Ireland 🇮🇪",       lat: 53.3, lon: -6.3   },
+  { name: "Nairobi",      country: "Kenya 🇰🇪",         lat: -1.3, lon: 36.8   },
+  { name: "Lahore",       country: "Pakistan 🇵🇰",      lat: 31.5, lon: 74.3   },
+  { name: "Tromsø",       country: "Norway 🇳🇴",        lat: 69.7, lon: 19.0   },
+  { name: "Rovaniemi",    country: "Finland 🇫🇮",       lat: 66.5, lon: 25.7   },
+  { name: "Sapporo",      country: "Japan 🇯🇵",         lat: 43.1, lon: 141.3  },
+  { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8, lon: 126.5  },
+  { name: "Banff",        country: "Canada 🇨🇦",        lat: 51.2, lon: -115.6 },
+  { name: "Yakutsk",      country: "Russia 🇷🇺",        lat: 62.0, lon: 129.7  },
 ];
+
 
 // ==============================================
 //  OUTFIT DATA
-//  Each outfit now has a unique 'img' emoji/icon
-//  9 outfits per weather type — no repeats
 // ==============================================
 const OUTFITS = {
- 
-  // ☀️ HOT — 9 unique outfits
+
   hot: [
-    { icon: "🩳", name: "Shorts",             tag: "Hot weather ☀️" },
-    { icon: "👗", name: "Summer dress",        tag: "Hot weather ☀️" },
-    { icon: "🩱", name: "Bodysuit",            tag: "Hot weather ☀️" },
-    { icon: "👚", name: "Crop top & skirt",    tag: "Hot weather ☀️" },
-    { icon: "🥿", name: "Sandals & vest",      tag: "Hot weather ☀️" },
-    { icon: "🩴", name: "Flip flops",          tag: "Hot weather ☀️" },
-    { icon: "👒", name: "Sun hat & dress",     tag: "Hot weather ☀️" },
-    { icon: "👙", name: "Swimwear",            tag: "Hot weather ☀️" },
-    { icon: "🧢", name: "Cap & light shirt",   tag: "Hot weather ☀️" },
+    { icon: "🩳", name: "Shorts",           tag: "Hot weather ☀️" },
+    { icon: "👗", name: "Summer dress",      tag: "Hot weather ☀️" },
+    { icon: "🩱", name: "Bodysuit",          tag: "Hot weather ☀️" },
+    { icon: "👚", name: "Crop top & skirt",  tag: "Hot weather ☀️" },
+    { icon: "🥿", name: "Sandals & vest",    tag: "Hot weather ☀️" },
+    { icon: "🩴", name: "Flip flops",        tag: "Hot weather ☀️" },
+    { icon: "👒", name: "Sun hat & dress",   tag: "Hot weather ☀️" },
+    { icon: "👙", name: "Swimwear",          tag: "Hot weather ☀️" },
+    { icon: "🧢", name: "Cap & light shirt", tag: "Hot weather ☀️" },
   ],
- 
-  // ❄️ COLD — 9 unique outfits
+
   cold: [
     { icon: "🧥", name: "Winter coat",         tag: "Cold weather ❄️" },
-    { icon: "🧤", name: "Gloves & jacket",     tag: "Cold weather ❄️" },
-    { icon: "🧣", name: "Scarf & wool coat",   tag: "Cold weather ❄️" },
-    { icon: "🥾", name: "Snow boots & parka",  tag: "Cold weather ❄️" },
-    { icon: "🧦", name: "Thick socks & coat",  tag: "Cold weather ❄️" },
-    { icon: "👢", name: "Knee boots & coat",   tag: "Cold weather ❄️" },
-    { icon: "🎿", name: "Thermal layers",      tag: "Cold weather ❄️" },
-    { icon: "assets/images/img1.png", name: "Knit jumper & scarf", tag: "Cold weather ❄️" },
-    { icon: "🪖", name: "Fur hat & puffer",    tag: "Cold weather ❄️" },
+    { icon: "🧤", name: "Gloves & jacket",      tag: "Cold weather ❄️" },
+    { icon: "🧣", name: "Scarf & wool coat",    tag: "Cold weather ❄️" },
+    { icon: "🥾", name: "Snow boots & parka",   tag: "Cold weather ❄️" },
+    { icon: "🧦", name: "Thick socks & coat",   tag: "Cold weather ❄️" },
+    { icon: "👢", name: "Knee boots & coat",    tag: "Cold weather ❄️" },
+    { icon: "🎿", name: "Thermal layers",       tag: "Cold weather ❄️" },
+    { icon: "🧶", name: "Knit jumper & scarf",  tag: "Cold weather ❄️" },
+    { icon: "🪖", name: "Fur hat & puffer",     tag: "Cold weather ❄️" },
   ],
- 
-  // 🌧️ RAIN — 9 unique outfits
+
   rain: [
-    { icon: "🌂", name: "Umbrella & mac",      tag: "Rainy day 🌧️" },
-    { icon: "☂️", name: "Brolly & coat",       tag: "Rainy day 🌧️" },
-    { icon: "👢", name: "Wellies & raincoat",  tag: "Rainy day 🌧️" },
-    { icon: "🥾", name: "Waterproof boots",    tag: "Rainy day 🌧️" },
-    { icon: "🧥", name: "Trench coat",         tag: "Rainy day 🌧️" },
-    { icon: "🩱", name: "Poncho",              tag: "Rainy day 🌧️" },
-    { icon: "🎒", name: "Waterproof jacket",   tag: "Rainy day 🌧️" },
-    { icon: "👖", name: "Waterproof trousers", tag: "Rainy day 🌧️" },
-    { icon: "🧤", name: "Gloves & rain hat",   tag: "Rainy day 🌧️" },
+    { icon: "🌂", name: "Umbrella & mac",       tag: "Rainy day 🌧️" },
+    { icon: "☂️", name: "Brolly & coat",         tag: "Rainy day 🌧️" },
+    { icon: "👢", name: "Wellies & raincoat",    tag: "Rainy day 🌧️" },
+    { icon: "🥾", name: "Waterproof boots",      tag: "Rainy day 🌧️" },
+    { icon: "🧥", name: "Trench coat",           tag: "Rainy day 🌧️" },
+    { icon: "🩱", name: "Poncho",                tag: "Rainy day 🌧️" },
+    { icon: "🎒", name: "Waterproof jacket",     tag: "Rainy day 🌧️" },
+    { icon: "👖", name: "Waterproof trousers",   tag: "Rainy day 🌧️" },
+    { icon: "🧤", name: "Gloves & rain hat",     tag: "Rainy day 🌧️" },
   ],
- 
-  // ⛄ SNOW — 9 unique outfits
+
   snow: [
-    { icon: "🧥", name: "Snowsuit & boots",    tag: "Snowy day ⛄" },
-    { icon: "🧤", name: "Mittens & puffer",    tag: "Snowy day ⛄" },
-    { icon: "⛷️", name: "Ski jacket",          tag: "Snowy day ⛄" },
-    { icon: "🧣", name: "Puffer & scarf",      tag: "Snowy day ⛄" },
-    { icon: "🧦", name: "Thermal socks",       tag: "Snowy day ⛄" },
-    { icon: "👢", name: "Snow boots",          tag: "Snowy day ⛄" },
-    { icon: "🎿", name: "Ski suit & goggles",  tag: "Snowy day ⛄" },
-    { icon: "🧶", name: "Wool hat & layers",   tag: "Snowy day ⛄" },
-    { icon: "🪖", name: "Fur coat & hat",      tag: "Snowy day ⛄" },
+    { icon: "🧥", name: "Snowsuit & boots",      tag: "Snowy day ⛄" },
+    { icon: "🧤", name: "Mittens & puffer",       tag: "Snowy day ⛄" },
+    { icon: "⛷️", name: "Ski jacket",             tag: "Snowy day ⛄" },
+    { icon: "🧣", name: "Puffer & scarf",         tag: "Snowy day ⛄" },
+    { icon: "🧦", name: "Thermal socks",          tag: "Snowy day ⛄" },
+    { icon: "👢", name: "Snow boots",             tag: "Snowy day ⛄" },
+    { icon: "🎿", name: "Ski suit & goggles",     tag: "Snowy day ⛄" },
+    { icon: "🧶", name: "Wool hat & layers",      tag: "Snowy day ⛄" },
+    { icon: "🪖", name: "Fur coat & hat",         tag: "Snowy day ⛄" },
   ],
 };
+
 
 // ==============================================
 //  GAME CONSTANTS
 // ==============================================
-const GAME_DURATION   = 45;  // total seconds per game
-const CARDS_PER_ROUND = 9;   // 9 cards shown each round (3 rows x 3 columns)
+const GAME_DURATION   = 45;
+const CARDS_PER_ROUND = 9;
 
- // ==============================================
+
+// ==============================================
 //  GAME STATE
 // ==============================================
-let score         = 0;
-let cityCount     = 0;
-let results       = [];
-let timeLeft      = GAME_DURATION;
-let gameTimerID   = null;
-let roundTimerID  = null;
-let roundTimeLeft = 3;
-let answered      = false;
-let currentCity   = null;
-let correctOutfit = null;
+let score          = 0;
+let cityCount      = 0;
+let timeLeft       = GAME_DURATION;
+let gameTimerID    = null;
+let roundTimerID   = null;
+let answered       = false;
+let currentCity    = null;
+let currentWeather = null;
+let correctOutfit  = null;
+let nextCityData   = null;  // pre-fetched next city
+
 
 // ==============================================
 //  DOM REFERENCES
@@ -144,87 +134,108 @@ const bannerCity       = document.getElementById('banner-city');
 const bannerDesc       = document.getElementById('banner-desc');
 const outfitGrid       = document.getElementById('outfit-grid');
 const feedbackBar      = document.getElementById('feedback-bar');
-const progressDots     = document.getElementById('progress-dots');
 const endBigEmoji      = document.getElementById('end-big-emoji');
 const endScore         = document.getElementById('end-score');
 const endMessage       = document.getElementById('end-message');
 const newHighscore     = document.getElementById('new-highscore');
-const endDotsRow       = document.getElementById('end-dots-row');
+
+// Load saved high score on page open
+highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
+
 
 // ==============================================
 //  DARK / LIGHT MODE TOGGLE
 // ==============================================
 const themeToggle = document.getElementById('theme-toggle');
 let isDark = false;
- 
-themeToggle.addEventListener('click', () => {
+
+themeToggle.addEventListener('click', function() {
   isDark = !isDark;
   document.documentElement.setAttribute('data-dark', isDark ? '1' : '0');
   themeToggle.textContent = isDark ? '☀️ Light' : '🌙 Dark';
 });
- 
-// ---- GRAB THE 3 SCREENS ----
-const screenStart = document.getElementById('screen-start');
-const screenGame  = document.getElementById('screen-game');
-const screenEnd   = document.getElementById('screen-end');
+
 
 // ==============================================
-//  SCREEN SWITCHERS (Section 3)
-//  Clean functions to show/hide the 3 screens
+//  SCREEN SWITCHERS
 // ==============================================
 function showStart() {
   screenStart.style.display = 'block';
   screenGame.style.display  = 'none';
   screenEnd.style.display   = 'none';
 }
- 
+
 function showGame() {
   screenStart.style.display = 'none';
   screenGame.style.display  = 'block';
   screenEnd.style.display   = 'none';
 }
- 
+
 function showEnd() {
   screenStart.style.display = 'none';
   screenGame.style.display  = 'none';
   screenEnd.style.display   = 'block';
 }
 
-// Grab the Start button
-const startBtn = document.getElementById('start-btn');
 
-// When Start is clicked → call the function
-startBtn.addEventListener('click', () => {
+// ==============================================
+//  RESET GAME STATE
+// ==============================================
+function resetState() {
+  score         = 0;
+  cityCount     = 0;
+  timeLeft      = GAME_DURATION;
+  answered      = false;
+  nextCityData  = null;
+
+  if (gameTimerID)  clearInterval(gameTimerID);
+  if (roundTimerID) clearInterval(roundTimerID);
+
+  document.body.className  = '';
+  scoreDisplay.textContent = 0;
+}
+
+
+// ==============================================
+//  START GAME
+// ==============================================
+function startGame() {
+  resetState();
   showGame();
-});
+  startGameTimer();
+  showNextCity();
+}
+
+
 // ==============================================
-//  GAME TIMER — counts down every second
+//  RESTART GAME — stays on game screen
 // ==============================================
+function restartGame() {
+  resetState();
+  startGameTimer();
+  showNextCity();
+}
 
-// Store how many seconds the player has left
-let timeLeft = 45;
 
-// Get the timer circle element from the HTML
-const timerDisplay = document.getElementById('game-timer');
+// ==============================================
+//  45-SECOND GAME TIMER
+// ==============================================
+function startGameTimer() {
+  gameTimerEl.textContent = timeLeft;
+  gameTimerEl.classList.remove('urgent');
 
-// Create a repeating function that runs every 1000ms (1 second)
-const timerInterval = setInterval(() => {
+  gameTimerID = setInterval(function() {
+    timeLeft--;
+    gameTimerEl.textContent = timeLeft;
 
-  // Reduce the time by 1 second
-  timeLeft--;
+    if (timeLeft <= 10) {
+      gameTimerEl.classList.add('urgent');
+    }
 
-  // Update the number shown inside the timer circle
-  timerDisplay.textContent = timeLeft;
-
-  // If the time is 10 seconds or less → make the timer turn red
-  if (timeLeft <= 10) {
-    timerDisplay.classList.add('urgent'); 
-  }
-
-  // If the time reaches 0 → stop the timer completely
-  if (timeLeft <= 0) {
-    clearInterval(timerInterval); // stop the countdown
-    endGame();                    // go to the end screen
-  }
-
-}, 1000); // 1000ms = 1 second
+    if (timeLeft <= 0) {
+      clearInterval(gameTimerID);
+      clearInterval(roundTimerID);
+      endGame();
+    }
+  }, 1000);
+}

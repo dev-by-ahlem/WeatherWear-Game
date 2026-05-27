@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WeatherWear Game 🌍</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>WeatherGame 🌍</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-
   <!-- =============================================
        NAVBAR
        ============================================= -->
   <nav id="navbar">
-    <div class="nav-logo"><span>WeatherWear</span> Game 🌍</div>
+    <div class="nav-logo">Weather<span>Game</span> 🌍</div>
     <div class="nav-right">
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙 Dark</button>
     </div>
@@ -31,6 +30,7 @@
         <div class="rule-box">✅ Correct = +1 pt<br/>❌ Wrong = −1 pt</div>
         <div class="rule-box">⏩ Skip = 0 pts<br/>next city appears</div>
       </div>
+      <!-- The class="start-btn": Used for styling in CSS & JS uses this button ID to “find” the button and attach behavior.-->
       <button class="start-btn" id="start-btn">▶ Start Game</button>
       <div class="highscore-row">🏅 Best score: <strong id="highscore-display">0</strong></div>
     </div>
@@ -55,13 +55,6 @@
     </div>
     <div class="outfit-grid" id="outfit-grid"></div>
     <div class="feedback-bar" id="feedback-bar" style="display:none"></div>
-    <div class="progress-dots" id="progress-dots"></div>
-
-    <!-- Game action buttons — back to home and restart -->
-    <div class="game-actions">
-      <button class="game-action-btn" id="back-btn">← Home</button>
-      <button class="game-action-btn" id="restart-btn">🔄 Restart</button>
-    </div>
   </div>
 
   <!-- =============================================
@@ -74,7 +67,6 @@
       <div class="end-score-label">points scored</div>
       <div class="end-message" id="end-message">Well done!</div>
       <div class="new-highscore" id="new-highscore" style="display:none">🎉 New best score!</div>
-      <div class="end-dots-row" id="end-dots-row"></div>
       <div class="end-buttons">
         <button class="btn-primary" id="play-again-btn">▶ Play Again</button>
         <button class="btn-secondary" id="home-btn">🏠 Home</button>
@@ -82,6 +74,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

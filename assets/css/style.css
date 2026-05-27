@@ -145,10 +145,10 @@ body.weather-snow::before {
   background: rgba(0, 0, 0, 0.50);
 }
 
-body.weather-hot  { background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXdjZXl5dGthMDV6eTd1OWtqbGttcjlvbHp3MWJ1dGd5ZW5vcnd3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6nUPnMaC9EsPJrNS/giphy.gif'); }
-body.weather-cold { background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHpncnExNWJ6dDcwMW5nZzE1N3F3dzh2azFuejdyMmVpMHo0OHNkZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26BRuo6sLetdllPAQ/giphy.gif'); }
-body.weather-rain { background-image: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWhiNmQ5cjBkMGR4djBxZnMwemhsd2U1cmNmNW84MnNqaGZocm44NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlBO7eyXzSZkJri/giphy.gif'); }
-body.weather-snow { background-image: url('https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVsMWp1YzV4ZWx0dDR4enhoNGQxMm1idHl4ZWJxZGl2eDdxMXlmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Wn74RUT0vjnoU98Hnt/giphy.gif'); }
+body.weather-hot  { background-image: url('https://th.bing.com/th/id/R.ba63ac0eb2349fb7d0af399789498b09?rik=NxxJoq%2bEYEuOew&riu=http%3a%2f%2fclipart-library.com%2fimages%2f5TRrMA4yc.gif&ehk=8ivxhSAUAlWq4R0IsNB2OunXyauHLhoARTf72Jcb8AY%3d&risl=&pid=ImgRaw&r=0'); }
+body.weather-cold { background-image: url('https://cdnl.iconscout.com/lottie/premium/thumb/clouds-8661887-6925055.gif'); }
+body.weather-rain { background-image: url('https://i.pinimg.com/originals/99/b2/32/99b232976a51bfb16e19de1c2003e611.gif'); }
+body.weather-snow { background-image: url('https://www.icegif.com/wp-content/uploads/2023/09/icegif-656.gif'); }
 
 
 /* ==============================================
@@ -335,60 +335,6 @@ body.weather-snow { background-image: url('https://media0.giphy.com/media/v1.Y2l
 
 
 /* ==============================================
-   PROGRESS DOTS
-   ============================================== */
-.progress-dots {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-  min-height: 8px;
-  margin-bottom: 4px;
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  transition: background 0.3s;
-}
-.dot.correct { background: var(--correct); }
-.dot.wrong   { background: var(--wrong); }
-.dot.skip    { background: var(--text2); }
-.dot.active  { background: var(--accent); }
-
-
-/* ==============================================
-   GAME SCREEN ACTION BUTTONS
-   Back (←) and Restart (🔄) shown during game
-   ============================================== */
-.game-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 14px;
-}
-
-.game-action-btn {
-  padding: 8px 20px;
-  border-radius: 99px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text2);
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  font-family: Arial, sans-serif;
-  transition: background 0.2s, color 0.2s;
-}
-
-.game-action-btn:hover {
-  background: var(--surface2);
-  color: var(--text);
-}
-
-
-/* ==============================================
    SCREEN 3 — END SCREEN
    ============================================== */
 #screen-end { text-align: center; padding-top: 20px; }
@@ -415,34 +361,13 @@ body.weather-snow { background-image: url('https://media0.giphy.com/media/v1.Y2l
   padding: 5px 16px;
   font-size: 13px;
   font-weight: bold;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 [data-dark="1"] .new-highscore {
   background: #3A2D00;
   border-color: #8B6914;
   color: #E09A35;
 }
-
-.end-dots-row {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 22px;
-}
-.end-dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.end-dot.correct { background: var(--correct-bg); color: var(--correct); }
-.end-dot.wrong   { background: var(--wrong-bg);   color: var(--wrong); }
-.end-dot.skip    { background: var(--skip-bg);     color: var(--text2); }
 
 .end-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
@@ -475,3 +400,14 @@ body.weather-snow { background-image: url('https://media0.giphy.com/media/v1.Y2l
 .btn-secondary:hover { filter: brightness(0.95); }
 
 
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+@media (max-width: 480px) {
+  .outfit-grid        { grid-template-columns: repeat(2, 1fr); }
+  .banner-question    { display: none; }
+  .hud-chip           { padding: 8px 12px; font-size: 12px; }
+  .hud-timer          { width: 44px; height: 44px; font-size: 18px; }
+  .end-buttons        { flex-direction: column; align-items: center; }
+  .rules-grid         { grid-template-columns: 1fr; }
+}
