@@ -175,7 +175,7 @@ As a player, I want the page background to change to a weather-themed animated G
 
 **User story:**  
 As a player, I want the next city to load instantly after I answer, so there is no waiting or loading delay that breaks the pace of the game.
-
+ 
 ### Acceptance Criteria
 - After answering, the next city appears immediately with no visible loading state.
 - The "Fetching real weather..." loading message only appears for the very first city of a game.
