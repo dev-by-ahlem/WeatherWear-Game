@@ -147,9 +147,6 @@ const endScore         = document.getElementById('end-score');
 const endMessage       = document.getElementById('end-message');
 const newHighscore     = document.getElementById('new-highscore');
 
-// Load saved high score on page open
-highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
-
 
 // ==============================================
 //  DARK / LIGHT MODE TOGGLE
