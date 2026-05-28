@@ -4,7 +4,7 @@
 
 ## ✅ Must-Have
 
-### 0️⃣ User Story 0 – Dark and light mode toggle (could-have)
+### 0️⃣ User Story 0 – Dark and light mode toggle (must-have)
 
 **User story:**  
 As a player, I want to switch between dark and light mode, so I can play comfortably in different lighting conditions and according to my personal preference.
