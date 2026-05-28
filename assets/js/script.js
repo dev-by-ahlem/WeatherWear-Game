@@ -39,6 +39,14 @@ const CITIES = [
   { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8, lon: 126.5  },
   { name: "Banff",        country: "Canada 🇨🇦",        lat: 51.2, lon: -115.6 },
   { name: "Yakutsk",      country: "Russia 🇷🇺",        lat: 62.0, lon: 129.7  },
+
+  // ---- SNOWY additions ⛄ ----
+  { name: "Murmansk",     country: "Russia 🇷🇺",        lat: 68.9, lon: 33.1   },
+  { name: "Norilsk",      country: "Russia 🇷🇺",        lat: 69.3, lon: 88.2   },
+  { name: "Fairbanks",    country: "USA 🇺🇸",           lat: 64.8, lon: -147.7 },
+  { name: "Whitehorse",   country: "Canada 🇨🇦",        lat: 60.7, lon: -135.1 },
+  { name: "Longyearbyen", country: "Norway 🇳🇴",        lat: 78.2, lon: 15.6   },
+  { name: "Erzurum",      country: "Turkey 🇹🇷",        lat: 39.9, lon: 41.3   },
 ];
 
 
