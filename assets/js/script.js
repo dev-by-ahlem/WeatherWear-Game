@@ -126,6 +126,11 @@ function getWeatherType(code, temp) {
   return "cold";
 }
 
+function getWeatherEmoji(type) {
+  const emojis = { hot: "☀️", cold: "🌨️", rain: "🌧️", snow: "❄️" };
+  return emojis[type];
+}
+
 // ==============================================
 //  GAME CONSTANTS
 // ==============================================
