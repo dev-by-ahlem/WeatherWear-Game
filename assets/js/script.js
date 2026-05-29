@@ -277,3 +277,12 @@ function startGameTimer() {
     }
   }, 1000);
 }
+
+// ==============================================
+//  BUTTON EVENT LISTENERS
+// ==============================================
+
+// Screen 1 — Start
+document.getElementById('start-btn').addEventListener('click', function() {
+  startGame();
+});
