@@ -131,6 +131,13 @@ function getWeatherEmoji(type) {
   return emojis[type];
 }
 
+function getWeatherDesc(type, temp) {
+  if (type === "hot")  return "Hot & sunny · " + temp + "°C";
+  if (type === "cold") return "Cold weather · " + temp + "°C";
+  if (type === "rain") return "Rainy · " + temp + "°C";
+  if (type === "snow") return "Snowing · " + temp + "°C";
+}
+
 // ==============================================
 //  GAME CONSTANTS
 // ==============================================
