@@ -285,6 +285,21 @@ function startGameTimer() {
     }
   }, 1000);
 }
+// ==============================================
+//  3-SECOND ROUND TIMER
+// ==============================================
+function startRoundTimer() {
+  let roundTimeLeft = 3;
+  if (roundTimerID) clearInterval(roundTimerID);
+
+  roundTimerID = setInterval(function() {
+    roundTimeLeft--;
+    if (roundTimeLeft <= 0) {
+      clearInterval(roundTimerID);
+      if (!answered) handleSkip();
+    }
+  }, 1000);
+}
 
 
 // ==============================================
