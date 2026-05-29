@@ -215,6 +215,14 @@ function showEnd() {
   screenEnd.style.display   = 'block';
 }
 
+// ==============================================
+//  HELPER FUNCTIONS
+// ==============================================
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 // *** Functions related to the start-game button *** 
 // ==============================================
 //  RESET GAME STATE
