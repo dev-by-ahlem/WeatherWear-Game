@@ -215,7 +215,7 @@ function showEnd() {
   screenEnd.style.display   = 'block';
 }
 
-
+// *** Functions related to the start-game button *** 
 // ==============================================
 //  RESET GAME STATE
 // ==============================================
