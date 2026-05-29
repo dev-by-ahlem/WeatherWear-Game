@@ -286,6 +286,50 @@ function startGameTimer() {
   }, 1000);
 }
 
+
+// ==============================================
+//  BUILD OUTFIT CARDS — 1 correct + 8 wrong
+// ==============================================
+function buildCards() {
+  outfitGrid.innerHTML = '';
+
+  const wrongKeys = Object.keys(OUTFITS).filter(function(k) {
+    return k !== currentWeather.type;
+  });
+
+  let wrongPool = [];
+  wrongKeys.forEach(function(k) {
+    OUTFITS[k].forEach(function(outfit) {
+      wrongPool.push({ key: k, outfit: outfit });
+    });
+  });
+
+  const wrongItems = shuffle(wrongPool).slice(0, CARDS_PER_ROUND - 1);
+
+  const allCards = shuffle([
+    { key: currentWeather.type, outfit: correctOutfit },
+    ...wrongItems
+  ]);
+
+  allCards.forEach(function(item) {
+    let card = document.createElement('div');
+    card.className   = 'outfit-card';
+    card.dataset.key = item.key;
+
+    card.innerHTML =
+      '<span class="card-icon">' + item.outfit.icon + '</span>' +
+      '<div class="card-name">'  + item.outfit.name + '</div>'  +
+      '<div class="card-tag">'   + item.outfit.tag  + '</div>';
+
+    card.addEventListener('click', function() {
+      checkAnswer(item.key, card);
+    });
+
+
+    outfitGrid.appendChild(card);
+  });
+}
+
 // ==============================================
 //  BUTTON EVENT LISTENERS
 // ==============================================
