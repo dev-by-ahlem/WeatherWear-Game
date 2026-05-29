@@ -104,6 +104,19 @@ const OUTFITS = {
   ],
 };
 
+// ==============================================
+//  WEATHER API — Open-Meteo (free, no key)
+// ==============================================
+
+async function fetchWeather(city) {
+  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
+  const response = await fetch(url);
+  const data     = await response.json();
+  const temp     = Math.round(data.current_weather.temperature);
+  const code     = data.current_weather.weathercode;
+  const type     = getWeatherType(code, temp);
+  return { type: type, temp: temp, emoji: getWeatherEmoji(type), desc: getWeatherDesc(type, temp) };
+}
 
 // ==============================================
 //  GAME CONSTANTS
