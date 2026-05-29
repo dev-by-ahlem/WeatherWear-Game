@@ -223,6 +223,12 @@ function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function showLoading() {
+  feedbackBar.textContent   = '🌍 Fetching real weather...';
+  feedbackBar.className     = 'feedback-bar skip-fb';
+  feedbackBar.style.display = 'block';
+}
+
 // *** Functions related to the start-game button *** 
 // ==============================================
 //  RESET GAME STATE
