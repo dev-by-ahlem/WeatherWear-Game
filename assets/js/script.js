@@ -118,6 +118,14 @@ async function fetchWeather(city) {
   return { type: type, temp: temp, emoji: getWeatherEmoji(type), desc: getWeatherDesc(type, temp) };
 }
 
+function getWeatherType(code, temp) {
+  if ([71,72,73,74,75,76,77,85,86].includes(code)) return "snow";
+  if ([51,52,53,55,56,57,61,62,63,64,65,66,67,80,81,82,95,96,99].includes(code)) return "rain";
+  if (temp < 5)  return "cold";
+  if (temp >= 25) return "hot";
+  return "cold";
+}
+
 // ==============================================
 //  GAME CONSTANTS
 // ==============================================
