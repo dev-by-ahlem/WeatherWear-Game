@@ -234,6 +234,15 @@ function setWeatherBg(weather) {
   document.body.classList.add('weather-' + weather);
 }
 
+// ==============================================
+//  PRE-FETCH — loads next city in the background
+// ==============================================
+async function prefetchNextCity() {
+  let city    = pickRandom(CITIES);
+  let weather = await fetchWeather(city);
+  nextCityData = { city: city, weather: weather };
+}
+
 // *** Functions related to the start-game button *** 
 // ==============================================
 //  RESET GAME STATE
