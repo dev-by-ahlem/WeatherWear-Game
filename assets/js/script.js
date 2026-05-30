@@ -229,6 +229,12 @@ function showLoading() {
   feedbackBar.style.display = 'block';
 }
 
+function showFeedback(type, msg) {
+  feedbackBar.textContent   = msg;
+  feedbackBar.className     = 'feedback-bar ' + type + '-fb';
+  feedbackBar.style.display = 'block';
+}
+
 function setWeatherBg(weather) {
   document.body.classList.remove('weather-hot', 'weather-cold', 'weather-rain', 'weather-snow');
   document.body.classList.add('weather-' + weather);
