@@ -228,6 +228,14 @@ function showLoading() {
   feedbackBar.className     = 'feedback-bar skip-fb';
   feedbackBar.style.display = 'block';
 }
+function shuffle(arr) {
+  let copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
 
 function showFeedback(type, msg) {
   feedbackBar.textContent   = msg;
@@ -311,6 +319,45 @@ function startGameTimer() {
     }
   }, 1000);
 }
+
+// ==============================================
+//  SHOW NEXT CITY
+// ==============================================
+async function showNextCity() {
+  answered = false;
+  feedbackBar.style.display = 'none';
+  feedbackBar.className     = 'feedback-bar';
+
+  cityCount++;
+  cityCountEl.textContent = cityCount;
+
+  if (nextCityData) {
+    // ⚡ Instant — data already pre-fetched
+    currentCity    = nextCityData.city;
+    currentWeather = nextCityData.weather;
+    nextCityData   = null;
+  } else {
+    // 🐢 First city only — fetch live
+    currentCity = pickRandom(CITIES);
+    showLoading();
+    currentWeather = await fetchWeather(currentCity);
+    feedbackBar.style.display = 'none';
+  }
+
+  // Start fetching the NEXT city in the background
+  prefetchNextCity();
+
+  bannerEmoji.textContent = currentWeather.emoji;
+  bannerCity.textContent  = currentCity.name + ', ' + currentCity.country;
+  bannerDesc.textContent  = currentWeather.desc;
+
+  setWeatherBg(currentWeather.type);
+
+  correctOutfit = pickRandom(OUTFITS[currentWeather.type]);
+  buildCards();
+  startRoundTimer();
+}
+
 // ==============================================
 //  3-SECOND ROUND TIMER
 // ==============================================
