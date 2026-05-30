@@ -470,6 +470,40 @@ function handleSkip() {
 }
 
 // ==============================================
+//  END GAME
+// ==============================================
+function endGame() {
+  clearInterval(roundTimerID);
+  document.body.className = '';
+  showEnd();
+
+  endScore.textContent = score;
+
+  if (score >= 8) {
+    endBigEmoji.textContent = '🏆';
+    endMessage.textContent  = "Amazing! You're a weather genius!";
+  } else if (score >= 5) {
+    endBigEmoji.textContent = '⛅';
+    endMessage.textContent  = 'Not bad! Keep practising 👕';
+  } else if (score >= 2) {
+    endBigEmoji.textContent = '🌧️';
+    endMessage.textContent  = 'You got soaked! Try again 😅';
+  } else {
+    endBigEmoji.textContent = '⛈️';
+    endMessage.textContent  = 'A total storm! Needs more practice 😬';
+  }
+
+  let best = parseInt(localStorage.getItem('wgHS') || 0);
+  if (score > best) {
+    localStorage.setItem('wgHS', score);
+    highscoreDisplay.textContent = score;
+    newHighscore.style.display   = 'inline-block';
+  } else {
+    newHighscore.style.display = 'none';
+  }
+}
+
+// ==============================================
 //  BUTTON EVENT LISTENERS
 // ==============================================
 
