@@ -74,15 +74,15 @@ const OUTFITS = {
   ],
 
   cold: [
-    { icon: "👖", name: "Trousers",          tag: "Cold weather ❄️" },  // BUG 5 FIXED — wrong tag corrected
+    { icon: "👖", name: "Jeans",          tag: "Cold weather ❄️" },  // BUG 5 FIXED — wrong tag corrected
     { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon'>", name: "Winter coat", tag: "Cold weather ❄️" },
-    { icon: "🧥", name: "Jacket",            tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/jacket.webp' class='card-img-icon'>", name: "Jacket",            tag: "Cold weather ❄️" },
     { icon: "🧣", name: "Scarf & wool coat", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon'>", name: "Boots", tag: "Cold weather ❄️" },
     { icon: "🧦", name: "Thick socks & coat",tag: "Cold weather ❄️" },
     { icon: "👢", name: "Knee boots & coat", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon'>", name: "Thick Jumper", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon'>", name: "Knit jumper & scarf", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon'>", name: "Jumper & scarf", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon'>", name: "Winter Hat", tag: "Cold weather ❄️" },
   ],
 
@@ -91,33 +91,31 @@ const OUTFITS = {
     { icon: "☂️", name: "Brolly & coat",          tag: "Rainy day 🌧️" },  // BUG 2 FIXED — name added
     { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon'>",         name: "Rain Coat",          tag: "Rainy day 🌧️" },
     { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon'>",  name: "Waterproof boots",   tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof jacket",  tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>",   name: "Waterproof Set",     tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/umbrella-rain-hat.webp' class='card-img-icon'>", name: "Umbrella & rain hat",tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof Jacket",  tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>",   name: "Waterproof Suit",     tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/umbrella-rain-hat.webp' class='card-img-icon'>", name: "Umbrella ",tag: "Rainy day 🌧️" },
   ],
 
   snow: [
     { icon: "<img src='assets/images/icons-outfits/snow-suit.webp' class='card-img-icon'>",     name: "Snow Suit",       tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon'>",   name: "Mittens & puffer",tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon'>",   name: "Snow Gloves",tag: "Snowy day ⛄" },
     { icon: "<img src='assets/images/icons-outfits/ski-jacket.webp' class='card-img-icon'>",    name: "Ski jacket",      tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon'>",name: "Puffer & scarf",  tag: "Snowy day ⛄" },
-    { icon: "🎿",                                                                                name: "Ski Shoes",       tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon'>",name: "Hat & scarf",  tag: "Snowy day ⛄" },
+    { icon: "🎿",  name: "Ski Shoes", tag: "Snowy day ⛄" },
     { icon: "<img src='assets/images/icons-outfits/snow-boots.webp' class='card-img-icon'>",    name: "Snow Boots",      tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/fur-coat.webp' class='card-img-icon'>",      name: "Fur coat",        tag: "Snowy day ⛄" },
-  
+    
+
   ],
 
   // BUG 1 FIXED — mild is now INSIDE the OUTFITS object
   mild: [
     { icon: "🧥", name: "Light jacket",      tag: "Mild weather ⛅" },
-    { icon: "👟", name: "Trainers & jeans",  tag: "Mild weather ⛅" },
-    { icon: "🧣", name: "Scarf & hoodie",    tag: "Mild weather ⛅" },
-    { icon: "🧤", name: "Light gloves",      tag: "Mild weather ⛅" },
-    { icon: "👖", name: "Jeans & jumper",    tag: "Mild weather ⛅" },
-    { icon: "🧶", name: "Knit cardigan",     tag: "Mild weather ⛅" },
-    { icon: "👢", name: "Ankle boots",       tag: "Mild weather ⛅" },
-    { icon: "🥾", name: "Casual boots",      tag: "Mild weather ⛅" },
-    { icon: "🧢", name: "Cap & light layer", tag: "Mild weather ⛅" },
+    { icon: "👟", name: "Trainers",  tag: "Mild weather ⛅" },
+    { icon:"<img src='assets/images/icons-outfits/light-trousers.webp' class='card-img-icon'>", name: "Light Trousers", tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/shirt.webp' class='card-img-icon'>", name: "Light Shirt",     tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/light-shoes.webp' class='card-img-icon'>", name: "Light Shoes",       tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/suit-tie.webp' class='card-img-icon'>", name: "Suit & Tie",      tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/light-jacket.webp' class='card-img-icon'>", name: " light Jacket", tag:"Mild weather ⛅" },
   ],
 };
 
@@ -149,11 +147,6 @@ function getWeatherDesc(type, temp) {
 
 async function fetchWeather(city) {
 
-
-  // 🧪 TEST ONLY — remove after testing snow works
-  if (city.name === "Yakutsk") {
-    return { type: "snow", temp: -15, emoji: "❄️", desc: "Snowing · -15°C" };
-  }
   const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
   const response = await fetch(url);
   const data     = await response.json();
