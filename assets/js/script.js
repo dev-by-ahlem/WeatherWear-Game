@@ -39,6 +39,19 @@ const CITIES = [
   { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8, lon: 126.5  },
   { name: "Banff",        country: "Canada 🇨🇦",        lat: 51.2, lon: -115.6 },
   { name: "Yakutsk",      country: "Russia 🇷🇺",        lat: 62.0, lon: 129.7  },
+    // 🌨️ SNOWY — Southern Hemisphere winter (snowing NOW in May/June)
+{ name: "Ushuaia",      country: "Argentina 🇦🇷",   lat: -54.8, lon: -68.3 },
+{ name: "Bariloche",    country: "Argentina 🇦🇷",   lat: -41.1, lon: -71.3 },
+{ name: "Queenstown",   country: "New Zealand 🇳🇿",  lat: -45.0, lon: 168.7 },
+{ name: "Mount Cook",   country: "New Zealand 🇳🇿",  lat: -43.6, lon: 170.1 },
+{ name: "Dunedin",      country: "New Zealand 🇳🇿",  lat: -45.9, lon: 170.5 },
+{ name: "Punta Arenas", country: "Chile 🇨🇱",        lat: -53.2, lon: -70.9 },
+{ name: "Ushuaia",      country: "Argentina 🇦🇷",   lat: -54.8, lon: -68.3 },
+{ name: "Bariloche",    country: "Argentina 🇦🇷",   lat: -41.1, lon: -71.3 },
+{ name: "Queenstown",   country: "New Zealand 🇳🇿",  lat: -45.0, lon: 168.7 },
+{ name: "Mount Cook",   country: "New Zealand 🇳🇿",  lat: -43.6, lon: 170.1 },
+{ name: "Dunedin",      country: "New Zealand 🇳🇿",  lat: -45.9, lon: 170.5 },
+{ name: "Punta Arenas", country: "Chile 🇨🇱",        lat: -53.2, lon: -70.9 },
 ];
 
 
@@ -48,11 +61,11 @@ const CITIES = [
 const OUTFITS = {
 
   hot: [
-    { icon: "🩳", name: "Shorts",tag: "Hot weather ☀️" },
-    { icon: "👗", name: "Summer dress",tag: "Hot weather ☀️" },
-    { icon: "🩱", name: "Bodysuit",tag: "Hot weather ☀️" },
-    { icon: "<img src='assets/images/icons-outfits/skirt.webp' class='card-img-icon'>", name: "Skirt",  tag: "Hot weather ☀️" },
-    { icon: "👚", name: "Crop top",  tag: "Hot weather ☀️" },
+    { icon: "🩳", name: "Shorts",           tag: "Hot weather ☀️" },
+    { icon: "👗", name: "Summer dress",      tag: "Hot weather ☀️" },
+    { icon: "🩱", name: "Bodysuit",          tag: "Hot weather ☀️" },
+    { icon: "<img src='assets/images/icons-outfits/skirt.webp' class='card-img-icon'>", name: "Skirt", tag: "Hot weather ☀️" },
+    { icon: "👚", name: "Crop top",          tag: "Hot weather ☀️" },
     { icon: "🥿", name: "Sandals & vest",    tag: "Hot weather ☀️" },
     { icon: "🩴", name: "Flip flops",        tag: "Hot weather ☀️" },
     { icon: "👒", name: "Sun hat & dress",   tag: "Hot weather ☀️" },
@@ -61,36 +74,50 @@ const OUTFITS = {
   ],
 
   cold: [
-    { icon: "👖", name: "trousers",   tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon'>", name: "Winter coat",tag: "Cold weather ❄️" },
-    { icon: "🧥", name: " jacket",      tag: "Cold weather ❄️" },
-    { icon: "🧣", name: "Scarf & wool coat",    tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon'>", name: "Boots",   tag: "Cold weather ❄️" },
-    { icon: "🧦", name: "Thick socks & coat", tag: "Cold weather ❄️" },
+    { icon: "👖", name: "Trousers",          tag: "Cold weather ❄️" },  // BUG 5 FIXED — wrong tag corrected
+    { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon'>", name: "Winter coat", tag: "Cold weather ❄️" },
+    { icon: "🧥", name: "Jacket",            tag: "Cold weather ❄️" },
+    { icon: "🧣", name: "Scarf & wool coat", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon'>", name: "Boots", tag: "Cold weather ❄️" },
+    { icon: "🧦", name: "Thick socks & coat",tag: "Cold weather ❄️" },
     { icon: "👢", name: "Knee boots & coat", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon'>", name: "Thick Jumper",tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon'>", name: "Knit jumper & scarf",  tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon'>", name: "winter Hat",     tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon'>", name: "Thick Jumper", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon'>", name: "Knit jumper & scarf", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon'>", name: "Winter Hat", tag: "Cold weather ❄️" },
   ],
 
   rain: [
-    { icon: "🌂", name: "Brolly",       tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/umbrella.webp' class='card-img-icon'>", name: "Umbrella",         tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon'>", name: "Rain Coat",    tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon'>", name: "Waterproof boots",      tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof jacket",     tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>", name: "Waterproof Set",   tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/umbrella-rain-hat.webp' class='card-img-icon'>", name: "umbrella & rain hat",     tag: "Rainy day 🌧️" },
+    { icon: "🌂", name: "Brolly",                tag: "Rainy day 🌧️" },
+    { icon: "☂️", name: "Brolly & coat",          tag: "Rainy day 🌧️" },  // BUG 2 FIXED — name added
+    { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon'>",         name: "Rain Coat",          tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon'>",  name: "Waterproof boots",   tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof jacket",  tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>",   name: "Waterproof Set",     tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/umbrella-rain-hat.webp' class='card-img-icon'>", name: "Umbrella & rain hat",tag: "Rainy day 🌧️" },
   ],
 
   snow: [
-    { icon: "<img src='assets/images/icons-outfits/snow-suit.webp' class='card-img-icon'>", name: "Snow Suit",      tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon'>", name: "Mittens & puffer",       tag: "Snowy day ⛄" },
-    { icon:"<img src='assets/images/icons-outfits/ski-jacket.webp' class='card-img-icon'>", name: "Ski jacket",             tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon'>", name: "Puffer & scarf",tag: "Snowy day ⛄" },
-    { icon: "🎿", name: "Ski Shoes",     tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/snow-boots.webp' class='card-img-icon'>", name: "Snow Boots",      tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/fur-coat.webp' class='card-img-icon'>", name: "Fur coat",         tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-suit.webp' class='card-img-icon'>",     name: "Snow Suit",       tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon'>",   name: "Mittens & puffer",tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/ski-jacket.webp' class='card-img-icon'>",    name: "Ski jacket",      tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon'>",name: "Puffer & scarf",  tag: "Snowy day ⛄" },
+    { icon: "🎿",                                                                                name: "Ski Shoes",       tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-boots.webp' class='card-img-icon'>",    name: "Snow Boots",      tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/fur-coat.webp' class='card-img-icon'>",      name: "Fur coat",        tag: "Snowy day ⛄" },
+  
+  ],
+
+  // BUG 1 FIXED — mild is now INSIDE the OUTFITS object
+  mild: [
+    { icon: "🧥", name: "Light jacket",      tag: "Mild weather ⛅" },
+    { icon: "👟", name: "Trainers & jeans",  tag: "Mild weather ⛅" },
+    { icon: "🧣", name: "Scarf & hoodie",    tag: "Mild weather ⛅" },
+    { icon: "🧤", name: "Light gloves",      tag: "Mild weather ⛅" },
+    { icon: "👖", name: "Jeans & jumper",    tag: "Mild weather ⛅" },
+    { icon: "🧶", name: "Knit cardigan",     tag: "Mild weather ⛅" },
+    { icon: "👢", name: "Ankle boots",       tag: "Mild weather ⛅" },
+    { icon: "🥾", name: "Casual boots",      tag: "Mild weather ⛅" },
+    { icon: "🧢", name: "Cap & light layer", tag: "Mild weather ⛅" },
   ],
 };
 
@@ -102,13 +129,13 @@ const OUTFITS = {
 function getWeatherType(code, temp) {
   if ([71,72,73,74,75,76,77,85,86].includes(code)) return "snow";
   if ([51,52,53,55,56,57,61,62,63,64,65,66,67,80,81,82,95,96,99].includes(code)) return "rain";
-  if (temp < 5)  return "cold";
-  if (temp >= 25) return "hot";
+  if (temp >= 20) return "hot";
+  if (temp >= 10) return "mild";
   return "cold";
 }
 
 function getWeatherEmoji(type) {
-  const emojis = { hot: "☀️", cold: "🌨️", rain: "🌧️", snow: "❄️" };
+  const emojis = { hot: "☀️", cold: "🥶", rain: "🌧️", snow: "❄️", mild: "⛅" };
   return emojis[type];
 }
 
@@ -117,9 +144,16 @@ function getWeatherDesc(type, temp) {
   if (type === "cold") return "Cold weather · " + temp + "°C";
   if (type === "rain") return "Rainy · " + temp + "°C";
   if (type === "snow") return "Snowing · " + temp + "°C";
+  if (type === "mild") return "Mild & cloudy · " + temp + "°C";
 }
 
 async function fetchWeather(city) {
+
+
+  // 🧪 TEST ONLY — remove after testing snow works
+  if (city.name === "Yakutsk") {
+    return { type: "snow", temp: -15, emoji: "❄️", desc: "Snowing · -15°C" };
+  }
   const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
   const response = await fetch(url);
   const data     = await response.json();
@@ -149,7 +183,7 @@ let answered       = false;
 let currentCity    = null;
 let currentWeather = null;
 let correctOutfit  = null;
-let nextCityData   = null;  // pre-fetched next city
+let nextCityData   = null;
 
 
 // ==============================================
@@ -172,7 +206,6 @@ const endScore         = document.getElementById('end-score');
 const endMessage       = document.getElementById('end-message');
 const newHighscore     = document.getElementById('new-highscore');
 
-// Load saved high score on page open
 highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
 
 
@@ -240,14 +273,15 @@ function showLoading() {
   feedbackBar.style.display = 'block';
 }
 
+// BUG 3 FIXED — mild added to remove list
 function setWeatherBg(weather) {
-  document.body.classList.remove('weather-hot', 'weather-cold', 'weather-rain', 'weather-snow');
+  document.body.classList.remove('weather-hot', 'weather-cold', 'weather-rain', 'weather-snow', 'weather-mild');
   document.body.classList.add('weather-' + weather);
 }
 
 
 // ==============================================
-//  PRE-FETCH — loads next city in the background
+//  PRE-FETCH
 // ==============================================
 async function prefetchNextCity() {
   let city    = pickRandom(CITIES);
@@ -286,7 +320,7 @@ function startGame() {
 
 
 // ==============================================
-//  RESTART GAME — stays on game screen
+//  RESTART GAME
 // ==============================================
 function restartGame() {
   resetState();
@@ -331,19 +365,18 @@ async function showNextCity() {
   cityCountEl.textContent = cityCount;
 
   if (nextCityData) {
-    // ⚡ Instant — data already pre-fetched
     currentCity    = nextCityData.city;
     currentWeather = nextCityData.weather;
     nextCityData   = null;
   } else {
-    // 🐢 First city only — fetch live
     currentCity = pickRandom(CITIES);
     showLoading();
     currentWeather = await fetchWeather(currentCity);
     feedbackBar.style.display = 'none';
   }
+// 👇 ADD THIS LINE
+  console.log(currentCity.name, '| temp:', currentWeather.temp, '| code from API gives type:', currentWeather.type);
 
-  // Start fetching the NEXT city in the background
   prefetchNextCity();
 
   bannerEmoji.textContent = currentWeather.emoji;
@@ -376,7 +409,7 @@ function startRoundTimer() {
 
 
 // ==============================================
-//  BUILD OUTFIT CARDS — 1 correct + 8 wrong
+//  BUILD OUTFIT CARDS
 // ==============================================
 function buildCards() {
   outfitGrid.innerHTML = '';
@@ -412,7 +445,6 @@ function buildCards() {
     card.addEventListener('click', function() {
       checkAnswer(item.key, card);
     });
-
 
     outfitGrid.appendChild(card);
   });
@@ -511,17 +543,14 @@ function endGame() {
 //  BUTTON EVENT LISTENERS
 // ==============================================
 
-// Screen 1 — Start
 document.getElementById('start-btn').addEventListener('click', function() {
   startGame();
 });
 
-// Screen 3 — Play again
 document.getElementById('play-again-btn').addEventListener('click', function() {
   startGame();
 });
 
-// Screen 3 — Home
 document.getElementById('home-btn').addEventListener('click', function() {
   document.body.className = '';
   highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;

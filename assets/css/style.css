@@ -125,7 +125,8 @@ body {
 body.weather-hot,
 body.weather-cold,
 body.weather-rain,
-body.weather-snow {
+body.weather-snow,
+body.weather-mild {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -135,7 +136,8 @@ body.weather-snow {
 body.weather-hot::before,
 body.weather-cold::before,
 body.weather-rain::before,
-body.weather-snow::before {
+body.weather-snow::before,
+body.weather-mild::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -147,10 +149,13 @@ body.weather-snow::before {
 [data-dark="1"] body.weather-hot::before,
 [data-dark="1"] body.weather-cold::before,
 [data-dark="1"] body.weather-rain::before,
-[data-dark="1"] body.weather-snow::before {
+[data-dark="1"] body.weather-snow::before,
+[data-dark="1"] body.weather-mild::before {
   background: rgba(0, 0, 0, 0.50);
 }
 
+/* BUG 4 FIXED — mild background GIF added */
+body.weather-mild { background-image: url('https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif'); }
 body.weather-hot  { background-image: url('https://th.bing.com/th/id/R.ba63ac0eb2349fb7d0af399789498b09?rik=NxxJoq%2bEYEuOew&riu=http%3a%2f%2fclipart-library.com%2fimages%2f5TRrMA4yc.gif&ehk=8ivxhSAUAlWq4R0IsNB2OunXyauHLhoARTf72Jcb8AY%3d&risl=&pid=ImgRaw&r=0'); }
 body.weather-cold { background-image: url('https://cdnl.iconscout.com/lottie/premium/thumb/clouds-8661887-6925055.gif'); }
 body.weather-rain { background-image: url('https://i.pinimg.com/originals/99/b2/32/99b232976a51bfb16e19de1c2003e611.gif'); }
