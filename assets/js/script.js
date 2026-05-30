@@ -511,3 +511,14 @@ function endGame() {
 document.getElementById('start-btn').addEventListener('click', function() {
   startGame();
 });
+// Screen 3 — Play again
+document.getElementById('play-again-btn').addEventListener('click', function() {
+  startGame();
+});
+
+// Screen 3 — Home
+document.getElementById('home-btn').addEventListener('click', function() {
+  document.body.className = '';
+  highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
+  showStart();
+});
