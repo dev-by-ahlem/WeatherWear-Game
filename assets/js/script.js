@@ -93,7 +93,7 @@ const OUTFITS = {
     { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon'>",  name: "Waterproof boots",   tag: "Rainy day 🌧️" },
     { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof Jacket",  tag: "Rainy day 🌧️" },
     { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>",   name: "Waterproof Suit",     tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/umbrella-rain-hat.webp' class='card-img-icon'>", name: "Umbrella ",tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/rain-hat.webp' class='card-img-icon'>", name: "Rain Hat ",tag: "Rainy day 🌧️" },
   ],
 
   snow: [
@@ -116,8 +116,9 @@ const OUTFITS = {
     { icon: "<img src='assets/images/icons-outfits/light-shoes.webp' class='card-img-icon'>", name: "Light Shoes",       tag: "Mild weather ⛅" },
     { icon: "<img src='assets/images/icons-outfits/suit-tie.webp' class='card-img-icon'>", name: "Suit & Tie",      tag: "Mild weather ⛅" },
     { icon: "<img src='assets/images/icons-outfits/light-jacket.webp' class='card-img-icon'>", name: " light Jacket", tag:"Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/trench.webp' class='card-img-icon'>", name: " Women Trench", tag:"Mild weather ⛅" },
   ],
-};
+}
 
 
 // ==============================================
