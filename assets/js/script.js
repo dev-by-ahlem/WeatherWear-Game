@@ -39,14 +39,6 @@ const CITIES = [
   { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8, lon: 126.5  },
   { name: "Banff",        country: "Canada 🇨🇦",        lat: 51.2, lon: -115.6 },
   { name: "Yakutsk",      country: "Russia 🇷🇺",        lat: 62.0, lon: 129.7  },
-
-  // ---- SNOWY additions ⛄ ----
-  { name: "Murmansk",     country: "Russia 🇷🇺",        lat: 68.9, lon: 33.1   },
-  { name: "Norilsk",      country: "Russia 🇷🇺",        lat: 69.3, lon: 88.2   },
-  { name: "Fairbanks",    country: "USA 🇺🇸",           lat: 64.8, lon: -147.7 },
-  { name: "Whitehorse",   country: "Canada 🇨🇦",        lat: 60.7, lon: -135.1 },
-  { name: "Longyearbyen", country: "Norway 🇳🇴",        lat: 78.2, lon: 15.6   },
-  { name: "Erzurum",      country: "Turkey 🇹🇷",        lat: 39.9, lon: 41.3   },
 ];
 
 
@@ -56,10 +48,11 @@ const CITIES = [
 const OUTFITS = {
 
   hot: [
-    { icon: "🩳", name: "Shorts",           tag: "Hot weather ☀️" },
-    { icon: "👗", name: "Summer dress",      tag: "Hot weather ☀️" },
-    { icon: "🩱", name: "Bodysuit",          tag: "Hot weather ☀️" },
-    { icon: "👚", name: "Crop top & skirt",  tag: "Hot weather ☀️" },
+    { icon: "🩳", name: "Shorts",tag: "Hot weather ☀️" },
+    { icon: "👗", name: "Summer dress",tag: "Hot weather ☀️" },
+    { icon: "🩱", name: "Bodysuit",tag: "Hot weather ☀️" },
+    { icon: "<img src='assets/images/icons-outfits/skirt.webp' class='card-img-icon'>", name: "Skirt",  tag: "Hot weather ☀️" },
+    { icon: "👚", name: "Crop top",  tag: "Hot weather ☀️" },
     { icon: "🥿", name: "Sandals & vest",    tag: "Hot weather ☀️" },
     { icon: "🩴", name: "Flip flops",        tag: "Hot weather ☀️" },
     { icon: "👒", name: "Sun hat & dress",   tag: "Hot weather ☀️" },
@@ -68,55 +61,43 @@ const OUTFITS = {
   ],
 
   cold: [
-    { icon: "🧥", name: "Winter coat",         tag: "Cold weather ❄️" },
-    { icon: "🧤", name: "Gloves & jacket",      tag: "Cold weather ❄️" },
+    { icon: "👖", name: "trousers",   tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon'>", name: "Winter coat",tag: "Cold weather ❄️" },
+    { icon: "🧥", name: " jacket",      tag: "Cold weather ❄️" },
     { icon: "🧣", name: "Scarf & wool coat",    tag: "Cold weather ❄️" },
-    { icon: "🥾", name: "Snow boots & parka",   tag: "Cold weather ❄️" },
-    { icon: "🧦", name: "Thick socks & coat",   tag: "Cold weather ❄️" },
-    { icon: "👢", name: "Knee boots & coat",    tag: "Cold weather ❄️" },
-    { icon: "🎿", name: "Thermal layers",       tag: "Cold weather ❄️" },
-    { icon: "🧶", name: "Knit jumper & scarf",  tag: "Cold weather ❄️" },
-    { icon: "🪖", name: "Fur hat & puffer",     tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon'>", name: "Boots",   tag: "Cold weather ❄️" },
+    { icon: "🧦", name: "Thick socks & coat", tag: "Cold weather ❄️" },
+    { icon: "👢", name: "Knee boots & coat", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon'>", name: "Thick Jumper",tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon'>", name: "Knit jumper & scarf",  tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon'>", name: "winter Hat",     tag: "Cold weather ❄️" },
   ],
 
   rain: [
-    { icon: "🌂", name: "Umbrella & mac",       tag: "Rainy day 🌧️" },
-    { icon: "☂️", name: "Brolly & coat",         tag: "Rainy day 🌧️" },
-    { icon: "👢", name: "Wellies & raincoat",    tag: "Rainy day 🌧️" },
-    { icon: "🥾", name: "Waterproof boots",      tag: "Rainy day 🌧️" },
-    { icon: "🧥", name: "Trench coat",           tag: "Rainy day 🌧️" },
-    { icon: "🩱", name: "Poncho",                tag: "Rainy day 🌧️" },
-    { icon: "🎒", name: "Waterproof jacket",     tag: "Rainy day 🌧️" },
-    { icon: "👖", name: "Waterproof trousers",   tag: "Rainy day 🌧️" },
-    { icon: "🧤", name: "Gloves & rain hat",     tag: "Rainy day 🌧️" },
+    { icon: "🌂", name: "Brolly",       tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/umbrella.webp' class='card-img-icon'>", name: "Umbrella",         tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon'>", name: "Rain Coat",    tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon'>", name: "Waterproof boots",      tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof jacket",     tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>", name: "Waterproof Set",   tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/umbrella-rain-hat.webp' class='card-img-icon'>", name: "umbrella & rain hat",     tag: "Rainy day 🌧️" },
   ],
 
   snow: [
-    { icon: "🧥", name: "Snowsuit & boots",      tag: "Snowy day ⛄" },
-    { icon: "🧤", name: "Mittens & puffer",       tag: "Snowy day ⛄" },
-    { icon: "⛷️", name: "Ski jacket",             tag: "Snowy day ⛄" },
-    { icon: "🧣", name: "Puffer & scarf",         tag: "Snowy day ⛄" },
-    { icon: "🧦", name: "Thermal socks",          tag: "Snowy day ⛄" },
-    { icon: "👢", name: "Snow boots",             tag: "Snowy day ⛄" },
-    { icon: "🎿", name: "Ski suit & goggles",     tag: "Snowy day ⛄" },
-    { icon: "🧶", name: "Wool hat & layers",      tag: "Snowy day ⛄" },
-    { icon: "🪖", name: "Fur coat & hat",         tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-suit.webp' class='card-img-icon'>", name: "Snow Suit",      tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon'>", name: "Mittens & puffer",       tag: "Snowy day ⛄" },
+    { icon:"<img src='assets/images/icons-outfits/ski-jacket.webp' class='card-img-icon'>", name: "Ski jacket",             tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon'>", name: "Puffer & scarf",tag: "Snowy day ⛄" },
+    { icon: "🎿", name: "Ski Shoes",     tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-boots.webp' class='card-img-icon'>", name: "Snow Boots",      tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/fur-coat.webp' class='card-img-icon'>", name: "Fur coat",         tag: "Snowy day ⛄" },
   ],
 };
+
 
 // ==============================================
 //  WEATHER API — Open-Meteo (free, no key)
 // ==============================================
-
-async function fetchWeather(city) {
-  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
-  const response = await fetch(url);
-  const data     = await response.json();
-  const temp     = Math.round(data.current_weather.temperature);
-  const code     = data.current_weather.weathercode;
-  const type     = getWeatherType(code, temp);
-  return { type: type, temp: temp, emoji: getWeatherEmoji(type), desc: getWeatherDesc(type, temp) };
-}
 
 function getWeatherType(code, temp) {
   if ([71,72,73,74,75,76,77,85,86].includes(code)) return "snow";
@@ -137,6 +118,17 @@ function getWeatherDesc(type, temp) {
   if (type === "rain") return "Rainy · " + temp + "°C";
   if (type === "snow") return "Snowing · " + temp + "°C";
 }
+
+async function fetchWeather(city) {
+  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
+  const response = await fetch(url);
+  const data     = await response.json();
+  const temp     = Math.round(data.current_weather.temperature);
+  const code     = data.current_weather.weathercode;
+  const type     = getWeatherType(code, temp);
+  return { type: type, temp: temp, emoji: getWeatherEmoji(type), desc: getWeatherDesc(type, temp) };
+}
+
 
 // ==============================================
 //  GAME CONSTANTS
@@ -180,6 +172,9 @@ const endScore         = document.getElementById('end-score');
 const endMessage       = document.getElementById('end-message');
 const newHighscore     = document.getElementById('new-highscore');
 
+// Load saved high score on page open
+highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
+
 
 // ==============================================
 //  DARK / LIGHT MODE TOGGLE
@@ -215,6 +210,7 @@ function showEnd() {
   screenEnd.style.display   = 'block';
 }
 
+
 // ==============================================
 //  HELPER FUNCTIONS
 // ==============================================
@@ -223,11 +219,6 @@ function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function showLoading() {
-  feedbackBar.textContent   = '🌍 Fetching real weather...';
-  feedbackBar.className     = 'feedback-bar skip-fb';
-  feedbackBar.style.display = 'block';
-}
 function shuffle(arr) {
   let copy = [...arr];
   for (let i = copy.length - 1; i > 0; i--) {
@@ -243,10 +234,17 @@ function showFeedback(type, msg) {
   feedbackBar.style.display = 'block';
 }
 
+function showLoading() {
+  feedbackBar.textContent   = '🌍 Fetching real weather...';
+  feedbackBar.className     = 'feedback-bar skip-fb';
+  feedbackBar.style.display = 'block';
+}
+
 function setWeatherBg(weather) {
   document.body.classList.remove('weather-hot', 'weather-cold', 'weather-rain', 'weather-snow');
   document.body.classList.add('weather-' + weather);
 }
+
 
 // ==============================================
 //  PRE-FETCH — loads next city in the background
@@ -257,7 +255,7 @@ async function prefetchNextCity() {
   nextCityData = { city: city, weather: weather };
 }
 
-// *** Functions related to the start-game button *** 
+
 // ==============================================
 //  RESET GAME STATE
 // ==============================================
@@ -320,6 +318,7 @@ function startGameTimer() {
   }, 1000);
 }
 
+
 // ==============================================
 //  SHOW NEXT CITY
 // ==============================================
@@ -357,6 +356,7 @@ async function showNextCity() {
   buildCards();
   startRoundTimer();
 }
+
 
 // ==============================================
 //  3-SECOND ROUND TIMER
@@ -449,6 +449,8 @@ function checkAnswer(clickedKey, clickedCard) {
     if (timeLeft > 0) showNextCity();
   }, 1200);
 }
+
+
 // ==============================================
 //  HANDLE SKIP
 // ==============================================
@@ -468,6 +470,7 @@ function handleSkip() {
     if (timeLeft > 0) showNextCity();
   }, 1200);
 }
+
 
 // ==============================================
 //  END GAME
@@ -503,6 +506,7 @@ function endGame() {
   }
 }
 
+
 // ==============================================
 //  BUTTON EVENT LISTENERS
 // ==============================================
@@ -511,6 +515,7 @@ function endGame() {
 document.getElementById('start-btn').addEventListener('click', function() {
   startGame();
 });
+
 // Screen 3 — Play again
 document.getElementById('play-again-btn').addEventListener('click', function() {
   startGame();
