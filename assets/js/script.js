@@ -449,6 +449,25 @@ function checkAnswer(clickedKey, clickedCard) {
     if (timeLeft > 0) showNextCity();
   }, 1200);
 }
+// ==============================================
+//  HANDLE SKIP
+// ==============================================
+function handleSkip() {
+  answered = true;
+
+  outfitGrid.querySelectorAll('.outfit-card').forEach(function(card) {
+    card.classList.add('disabled');
+    if (card.dataset.key === currentWeather.type) {
+      card.classList.add('correct');
+    }
+  });
+
+  showFeedback('skip', '⏱ Too slow! — Correct: ' + correctOutfit.name);
+
+  setTimeout(function() {
+    if (timeLeft > 0) showNextCity();
+  }, 1200);
+}
 
 // ==============================================
 //  BUTTON EVENT LISTENERS
