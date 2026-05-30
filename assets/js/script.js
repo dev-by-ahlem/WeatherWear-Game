@@ -418,6 +418,38 @@ function buildCards() {
   });
 }
 
+
+// ==============================================
+//  CHECK ANSWER
+// ==============================================
+function checkAnswer(clickedKey, clickedCard) {
+  if (answered) return;
+  answered = true;
+  clearInterval(roundTimerID);
+
+  outfitGrid.querySelectorAll('.outfit-card').forEach(function(card) {
+    card.classList.add('disabled');
+    if (card.dataset.key === currentWeather.type) {
+      card.classList.add('correct');
+    }
+  });
+
+  if (clickedKey === currentWeather.type) {
+    score++;
+    showFeedback('correct', '✅ Correct! +1 point — ' + correctOutfit.name);
+  } else {
+    score--;
+    clickedCard.classList.add('wrong');
+    showFeedback('wrong', '❌ Wrong! −1 point — Correct: ' + correctOutfit.name);
+  }
+
+  scoreDisplay.textContent = score;
+
+  setTimeout(function() {
+    if (timeLeft > 0) showNextCity();
+  }, 1200);
+}
+
 // ==============================================
 //  BUTTON EVENT LISTENERS
 // ==============================================
