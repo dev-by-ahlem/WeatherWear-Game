@@ -64,7 +64,7 @@ const OUTFITS = {
     { icon: "🩳", name: "Shorts",           tag: "Hot weather ☀️" },
     { icon: "👗", name: "Summer dress",      tag: "Hot weather ☀️" },
     { icon: "🩱", name: "Bodysuit",          tag: "Hot weather ☀️" },
-    { icon: "<img src='assets/images/icons-outfits/skirt.webp' class='card-img-icon'>", name: "Skirt", tag: "Hot weather ☀️" },
+    { icon: "<img src='assets/images/icons-outfits/skirt.webp' class='card-img-icon' loading='lazy'>", name: "Skirt", tag: "Hot weather ☀️" },
     { icon: "👚", name: "Crop top",          tag: "Hot weather ☀️" },
     { icon: "🥿", name: "Sandals & vest",    tag: "Hot weather ☀️" },
     { icon: "🩴", name: "Flip flops",        tag: "Hot weather ☀️" },
@@ -75,34 +75,34 @@ const OUTFITS = {
 
   cold: [
     { icon: "👖", name: "Jeans",          tag: "Cold weather ❄️" },  // BUG 5 FIXED — wrong tag corrected
-    { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon'>", name: "Winter coat", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/jacket.webp' class='card-img-icon'>", name: "Jacket",            tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon' loading='lazy'>", name: "Winter coat", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/jacket.webp' class='card-img-icon' loading='lazy'>", name: "Jacket",            tag: "Cold weather ❄️" },
     { icon: "🧣", name: "Scarf & wool coat", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon'>", name: "Boots", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon' loading='lazy'>", name: "Boots", tag: "Cold weather ❄️" },
     { icon: "🧦", name: "Thick socks & coat",tag: "Cold weather ❄️" },
     { icon: "👢", name: "Knee boots & coat", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon'>", name: "Thick Jumper", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon'>", name: "Jumper & scarf", tag: "Cold weather ❄️" },
-    { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon'>", name: "Winter Hat", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon' loading='lazy'>", name: "Thick Jumper", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon' loading='lazy'>", name: "Jumper & scarf", tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon' loading='lazy'>", name: "Winter Hat", tag: "Cold weather ❄️" },
   ],
 
   rain: [
     { icon: "🌂", name: "Brolly",                tag: "Rainy day 🌧️" },
     { icon: "☂️", name: "Brolly & coat",          tag: "Rainy day 🌧️" },  // BUG 2 FIXED — name added
-    { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon'>",         name: "Rain Coat",          tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon'>",  name: "Waterproof boots",   tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon'>", name: "Waterproof Jacket",  tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon'>",   name: "Waterproof Suit",     tag: "Rainy day 🌧️" },
-    { icon: "<img src='assets/images/icons-outfits/rain-hat.webp' class='card-img-icon'>", name: "Rain Hat ",tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon' loading='lazy'>",         name: "Rain Coat",          tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon' loading='lazy'>",  name: "Waterproof boots",   tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon' loading='lazy'>", name: "Waterproof Jacket",  tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/waterproof-suit.webp' class='card-img-icon' loading='lazy'>",   name: "Waterproof Suit",     tag: "Rainy day 🌧️" },
+    { icon: "<img src='assets/images/icons-outfits/rain-hat.webp' class='card-img-icon' loading='lazy'>", name: "Rain Hat ",tag: "Rainy day 🌧️" },
   ],
 
   snow: [
-    { icon: "<img src='assets/images/icons-outfits/snow-suit.webp' class='card-img-icon'>",     name: "Snow Suit",       tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon'>",   name: "Snow Gloves",tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/ski-jacket.webp' class='card-img-icon'>",    name: "Ski jacket",      tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon'>",name: "Hat & scarf",  tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-suit.webp' class='card-img-icon' loading='lazy'>",     name: "Snow Suit",       tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp' class='card-img-icon' loading='lazy'>",   name: "Snow Gloves",tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/ski-jacket.webp' class='card-img-icon' loading='lazy'>",    name: "Ski jacket",      tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/scarf-hat-snow.webp' class='card-img-icon' loading='lazy'>",name: "Hat & scarf",  tag: "Snowy day ⛄" },
     { icon: "🎿",  name: "Ski Shoes", tag: "Snowy day ⛄" },
-    { icon: "<img src='assets/images/icons-outfits/snow-boots.webp' class='card-img-icon'>",    name: "Snow Boots",      tag: "Snowy day ⛄" },
+    { icon: "<img src='assets/images/icons-outfits/snow-boots.webp' class='card-img-icon' loading='lazy'>",    name: "Snow Boots",      tag: "Snowy day ⛄" },
     
 
   ],
@@ -111,12 +111,12 @@ const OUTFITS = {
   mild: [
     { icon: "🧥", name: "Light jacket",      tag: "Mild weather ⛅" },
     { icon: "👟", name: "Trainers",  tag: "Mild weather ⛅" },
-    { icon:"<img src='assets/images/icons-outfits/light-trousers.webp' class='card-img-icon'>", name: "Light Trousers", tag: "Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/shirt.webp' class='card-img-icon'>", name: "Light Shirt",     tag: "Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/light-shoes.webp' class='card-img-icon'>", name: "Light Shoes",       tag: "Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/suit-tie.webp' class='card-img-icon'>", name: "Suit & Tie",      tag: "Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/light-jacket.webp' class='card-img-icon'>", name: "light Jacket", tag:"Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/trench.webp' class='card-img-icon'>", name: "Women Trench", tag:"Mild weather ⛅" },
+    { icon:"<img src='assets/images/icons-outfits/light-trousers.webp' class='card-img-icon' loading='lazy'>", name: "Light Trousers", tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/shirt.webp' class='card-img-icon' loading='lazy'>", name: "Light Shirt",     tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/light-shoes.webp' class='card-img-icon' loading='lazy'>", name: "Light Shoes",       tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/suit-tie.webp' class='card-img-icon' loading='lazy'>", name: "Suit & Tie",      tag: "Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/light-jacket.webp' class='card-img-icon' loading='lazy'>", name: "light Jacket", tag:"Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/trench.webp' class='card-img-icon' loading='lazy'>", name: "Women Trench", tag:"Mild weather ⛅" },
   ],
 }
 
