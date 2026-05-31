@@ -50,7 +50,7 @@ The validation returned no errors, only a few warnings that can be ignored. Plea
 [css-file](assets/css/style.css)
 ![CSS-Validation](assets/images/validations/css.png)
 
-### HTML
+### HTML 
 I also validated each of my HTML files using the [W3C Validation Service](https://validator.w3.org/#validate_by_input).
 There are no erros or warnings on the HTML validations. Below are the validation results for my HTML pages.
 
