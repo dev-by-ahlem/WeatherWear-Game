@@ -11,7 +11,9 @@
 //  and latitude/longitude coordinates used to fetch real weather data.
 // ==============================================
 const CITIES = [
+ 
   // --- Hot / Warm cities ---
+  // These cities are reliably hot year-round — API will return "hot" naturally
   { name: "Dubai",        country: "UAE 🇦🇪",          lat: 25.2,  lon: 55.3   },
   { name: "Cairo",        country: "Egypt 🇪🇬",         lat: 30.1,  lon: 31.2   },
   { name: "Mumbai",       country: "India 🇮🇳",         lat: 19.1,  lon: 72.9   },
@@ -25,8 +27,9 @@ const CITIES = [
   { name: "Karachi",      country: "Pakistan 🇵🇰",      lat: 24.9,  lon: 67.0   },
   { name: "Dhaka",        country: "Bangladesh 🇧🇩",    lat: 23.8,  lon: 90.4   },
   { name: "Lahore",       country: "Pakistan 🇵🇰",      lat: 31.5,  lon: 74.3   },
-
+ 
   // --- Cold / Wet cities ---
+  // These cities vary between cold, mild and rain depending on season
   { name: "Moscow",       country: "Russia 🇷🇺",        lat: 55.8,  lon: 37.6   },
   { name: "Oslo",         country: "Norway 🇳🇴",        lat: 59.9,  lon: 10.7   },
   { name: "Helsinki",     country: "Finland 🇫🇮",       lat: 60.2,  lon: 25.0   },
@@ -41,23 +44,23 @@ const CITIES = [
   { name: "Dublin",       country: "Ireland 🇮🇪",       lat: 53.3,  lon: -6.3   },
   { name: "Nairobi",      country: "Kenya 🇰🇪",         lat: -1.3,  lon: 36.8   },
   { name: "Tromsø",       country: "Norway 🇳🇴",        lat: 69.7,  lon: 19.0   },
-
-  // --- Snowy cities (Northern Hemisphere) ---
-  { name: "Rovaniemi",    country: "Finland 🇫🇮",       lat: 66.5,  lon: 25.7   },
-  { name: "Sapporo",      country: "Japan 🇯🇵",         lat: 43.1,  lon: 141.3  },
-  { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8,  lon: 126.5  },
-  { name: "Banff",        country: "Canada 🇨🇦",        lat: 51.2,  lon: -115.6 },
-  { name: "Yakutsk",      country: "Russia 🇷🇺",        lat: 62.0,  lon: 129.7  },
-
-  // --- Snowy cities (Southern Hemisphere — winter in May/June) ---
-  { name: "Ushuaia",      country: "Argentina 🇦🇷",     lat: -54.8, lon: -68.3  },
-  { name: "Bariloche",    country: "Argentina 🇦🇷",     lat: -41.1, lon: -71.3  },
-  { name: "Queenstown",   country: "New Zealand 🇳🇿",   lat: -45.0, lon: 168.7  },
-  { name: "Mount Cook",   country: "New Zealand 🇳🇿",   lat: -43.6, lon: 170.1  },
-  { name: "Dunedin",      country: "New Zealand 🇳🇿",   lat: -45.9, lon: 170.5  },
-  { name: "Punta Arenas", country: "Chile 🇨🇱",         lat: -53.2, lon: -70.9  },
+ 
+  // --- Snowy cities (forcedType: "snow") ---
+  // These cities are known to be snowy but the live API often returns
+  // mild or rain codes for them, especially outside peak winter.
+  // forcedType guarantees the game always treats them as snow.
+  { name: "Rovaniemi",    country: "Finland 🇫🇮",       lat: 66.5,  lon: 25.7,  forcedType: "snow" },
+  { name: "Sapporo",      country: "Japan 🇯🇵",         lat: 43.1,  lon: 141.3, forcedType: "snow" },
+  { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8,  lon: 126.5, forcedType: "snow" },
+  { name: "Banff",        country: "Canada 🇨🇦",        lat: 51.2,  lon: -115.6,forcedType: "snow" },
+  { name: "Yakutsk",      country: "Russia 🇷🇺",        lat: 62.0,  lon: 129.7, forcedType: "snow" },
+  { name: "Ushuaia",      country: "Argentina 🇦🇷",     lat: -54.8, lon: -68.3, forcedType: "snow" },
+  { name: "Bariloche",    country: "Argentina 🇦🇷",     lat: -41.1, lon: -71.3, forcedType: "snow" },
+  { name: "Queenstown",   country: "New Zealand 🇳🇿",   lat: -45.0, lon: 168.7, forcedType: "snow" },
+  { name: "Mount Cook",   country: "New Zealand 🇳🇿",   lat: -43.6, lon: 170.1, forcedType: "snow" },
+  { name: "Dunedin",      country: "New Zealand 🇳🇿",   lat: -45.9, lon: 170.5, forcedType: "snow" },
+  { name: "Punta Arenas", country: "Chile 🇨🇱",         lat: -53.2, lon: -70.9, forcedType: "snow" },
 ];
-
 
 // ==============================================
 //  SECTION 2: OUTFIT DATA
