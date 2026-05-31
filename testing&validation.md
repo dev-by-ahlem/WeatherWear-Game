@@ -1,5 +1,7 @@
 ## 🧪 Testing & Validation
 
+---
+
 ### ✋ Manual Testing
 
 📝 Manual testing was carried out on all three screens to verify that every interactive element works correctly.
