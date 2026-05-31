@@ -368,9 +368,9 @@ async function showNextCity() {
     currentWeather = await fetchWeather(currentCity);
     feedbackBar.style.display = 'none';
   }
-// 👇 ADD THIS LINE
+/* 👇 Testing for dev tool
   console.log(currentCity.name, '| temp:', currentWeather.temp, '| code from API gives type:', currentWeather.type);
-
+*/
   prefetchNextCity();
 
   bannerEmoji.textContent = currentWeather.emoji;
