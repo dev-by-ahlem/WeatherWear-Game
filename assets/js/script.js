@@ -62,25 +62,24 @@ const OUTFITS = {
 
   hot: [
     { icon: "🩳", name: "Shorts",           tag: "Hot weather ☀️" },
-    { icon: "👗", name: "Summer dress",      tag: "Hot weather ☀️" },
-    { icon: "🩱", name: "Bodysuit",          tag: "Hot weather ☀️" },
+    { icon: "👗", name: "Summer Dress",      tag: "Hot weather ☀️" },
     { icon: "<img src='assets/images/icons-outfits/skirt.webp' class='card-img-icon' loading='lazy'>", name: "Skirt", tag: "Hot weather ☀️" },
-    { icon: "👚", name: "Crop top",          tag: "Hot weather ☀️" },
-    { icon: "🥿", name: "Sandals & vest",    tag: "Hot weather ☀️" },
+    { icon: "👚", name: "Crop Top",          tag: "Hot weather ☀️" },
+    { icon: "🥿", name: "Summer Sandals",    tag: "Hot weather ☀️" },
     { icon: "🩴", name: "Flip flops",        tag: "Hot weather ☀️" },
-    { icon: "👒", name: "Sun hat & dress",   tag: "Hot weather ☀️" },
-    { icon: "👙", name: "Swimwear",          tag: "Hot weather ☀️" },
-    { icon: "🧢", name: "Cap & light shirt", tag: "Hot weather ☀️" },
+    { icon: "👒", name: "Sun Hat",   tag: "Hot weather ☀️" },
+    { icon: "🩱", name: "Swimwear",          tag: "Hot weather ☀️" },
+    { icon: "🧢", name: "Cap", tag: "Hot weather ☀️" },
   ],
 
   cold: [
     { icon: "👖", name: "Jeans",          tag: "Cold weather ❄️" },  // BUG 5 FIXED — wrong tag corrected
     { icon: "<img src='assets/images/icons-outfits/coat.webp' class='card-img-icon' loading='lazy'>", name: "Winter coat", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/jacket.webp' class='card-img-icon' loading='lazy'>", name: "Jacket",            tag: "Cold weather ❄️" },
-    { icon: "🧣", name: "Scarf & wool coat", tag: "Cold weather ❄️" },
+    { icon: "🧣", name: "Scarf", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/boots.webp' class='card-img-icon' loading='lazy'>", name: "Boots", tag: "Cold weather ❄️" },
-    { icon: "🧦", name: "Thick socks & coat",tag: "Cold weather ❄️" },
-    { icon: "👢", name: "Knee boots & coat", tag: "Cold weather ❄️" },
+    { icon: "🧦", name: "Thick socks",tag: "Cold weather ❄️" },
+    { icon: "<img src='assets/images/icons-outfits/women-boots.webp' class='card-img-icon' loading='lazy'>", name: "Knee boots", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/thick-jumper.webp' class='card-img-icon' loading='lazy'>", name: "Thick Jumper", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/jumper-scarf.webp' class='card-img-icon' loading='lazy'>", name: "Jumper & scarf", tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/winter-hat.webp' class='card-img-icon' loading='lazy'>", name: "Winter Hat", tag: "Cold weather ❄️" },
@@ -88,7 +87,7 @@ const OUTFITS = {
 
   rain: [
     { icon: "🌂", name: "Brolly",                tag: "Rainy day 🌧️" },
-    { icon: "☂️", name: "Brolly & coat",          tag: "Rainy day 🌧️" },  // BUG 2 FIXED — name added
+    { icon: "☂️", name: "Umbrella",          tag: "Rainy day 🌧️" },  // BUG 2 FIXED — name added
     { icon: "<img src='assets/images/icons-outfits/rain-coat.webp' class='card-img-icon' loading='lazy'>",         name: "Rain Coat",          tag: "Rainy day 🌧️" },
     { icon: "<img src='assets/images/icons-outfits/waterproof-boots.webp' class='card-img-icon' loading='lazy'>",  name: "Waterproof boots",   tag: "Rainy day 🌧️" },
     { icon: "<img src='assets/images/icons-outfits/waterproof-jacket.webp' class='card-img-icon' loading='lazy'>", name: "Waterproof Jacket",  tag: "Rainy day 🌧️" },

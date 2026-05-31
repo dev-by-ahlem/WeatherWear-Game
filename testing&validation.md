@@ -63,21 +63,11 @@ Lighthouse is a Chrome tool that analyzes my website’s performance, accessibil
 
 ## ⚡Performance, Accessibility, Best Practices and SEO validations
 
-#### Screen1 - 🖥️Desktop
+#### 🖥️Desktop
 
-![Lighthouse Validation - Screen1 Desktop](assets/images/lighthouse/desktop-lighthouse-screen1.png)
+![Lighthouse Validation - Desktop](assets/images/validations/lighthouse-desktop.png)
 
-#### Screen1 - 📱Mobile
-![Lighthouse Validation - Screen1 Mobile](assets/images/lighthouse/mobile-lighthouse-screen1.png)
+#### 📱Mobile
+![Lighthouse Validation - Mobile](assets/images/validations/lighthouse-mobile.png)
 
-#### Screen2 - 🖥️Desktop
-![Lighthouse Validation - Screen2 Desktop](assets/images/lighthouse/desktop-lighthouse-screen2.png)
 
-#### Screen2 - 📱Mobile
-![Lighthouse Validation - Screen2 Mobile](assets/images/lighthouse/mobile-lighthouse-screen2.png)
-
-#### Screen3 - 🖥️Desktop
-![Lighthouse Validation - Screen3 Desktop](assets/images/lighthouse/desktop-lighthouse-Screen3.png)
-
-#### Screen3 - 📱Mobile
-![Lighthouse Validation - Screen3 Mobile](assets/images/lighthouse/mobile-lighthouse-Screen3.png)
