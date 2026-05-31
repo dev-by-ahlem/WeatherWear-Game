@@ -115,8 +115,8 @@ const OUTFITS = {
     { icon: "<img src='assets/images/icons-outfits/shirt.webp' class='card-img-icon'>", name: "Light Shirt",     tag: "Mild weather ⛅" },
     { icon: "<img src='assets/images/icons-outfits/light-shoes.webp' class='card-img-icon'>", name: "Light Shoes",       tag: "Mild weather ⛅" },
     { icon: "<img src='assets/images/icons-outfits/suit-tie.webp' class='card-img-icon'>", name: "Suit & Tie",      tag: "Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/light-jacket.webp' class='card-img-icon'>", name: " light Jacket", tag:"Mild weather ⛅" },
-    { icon: "<img src='assets/images/icons-outfits/trench.webp' class='card-img-icon'>", name: " Women Trench", tag:"Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/light-jacket.webp' class='card-img-icon'>", name: "light Jacket", tag:"Mild weather ⛅" },
+    { icon: "<img src='assets/images/icons-outfits/trench.webp' class='card-img-icon'>", name: "Women Trench", tag:"Mild weather ⛅" },
   ],
 }
 
@@ -220,7 +220,7 @@ themeToggle.addEventListener('click', function() {
 //  SCREEN SWITCHERS
 // ==============================================
 function showStart() {
-  screenStart.style.display = 'block';
+  screenStart.style.display = 'flex';   // ✅ changed from 'block'
   screenGame.style.display  = 'none';
   screenEnd.style.display   = 'none';
 }
@@ -234,7 +234,7 @@ function showGame() {
 function showEnd() {
   screenStart.style.display = 'none';
   screenGame.style.display  = 'none';
-  screenEnd.style.display   = 'block';
+  screenEnd.style.display   = 'flex';   // ✅ changed from 'block'
 }
 
 
