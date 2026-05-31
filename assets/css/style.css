@@ -449,9 +449,9 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
    The heads-up display (score, round, timer) shown during gameplay.
    ============================================== */
 #screen-game {
-  /* Top and bottom spacing for the game screen */
-  padding-top: 32px;
-  padding-bottom: 32px;
+  /* Reduced top and bottom spacing so all 9 cards fit on screen without scrolling */
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 /* The HUD bar containing score chip, round chip, and timer circle */
@@ -463,7 +463,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   justify-content: space-between;
 
   /* Space below the HUD before the weather banner */
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 /* Score/round info pill inside the HUD */
@@ -522,8 +522,8 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   background: var(--banner-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 18px;
+  padding: 12px 18px;
+  margin-bottom: 10px;
 
   /* Frosted glass blur effect on the background behind the banner */
   backdrop-filter: blur(4px);
@@ -531,8 +531,8 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   transition: background 0.4s, border-color 0.3s;
 }
 
-/* The large weather emoji (e.g. ☀️ ❄️ 🌧️) on the left of the banner */
-.banner-emoji  { font-size: 70px; line-height: 1; flex-shrink: 0; }
+/* The weather emoji on the left of the banner — reduced to 52px so all cards fit on one screen without scrolling */
+.banner-emoji  { font-size: 52px; line-height: 1; flex-shrink: 0; }
 
 /* City name text — bold and prominent */
 .banner-city   { font-size: 20px; font-weight: bold; color: var(--text); }
@@ -577,7 +577,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   /* 2px border so the border thickening on correct/wrong is noticeable */
   border: 2px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px 12px;
+  padding: 10px 8px;
   text-align: center;
   cursor: pointer;
 
@@ -587,8 +587,8 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 
 /* Clothing image inside each card */
 .card-img-icon {
-  width: 80px;
-  height: 80px;
+  width: 62px;
+  height: 62px;
 
   /* Scales image to fit while preserving aspect ratio */
   object-fit: contain;
@@ -616,7 +616,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 .outfit-card.disabled { cursor: default; pointer-events: none; opacity: 0.8; }
 
 /* Fallback emoji icon used if no image is available */
-.card-icon { font-size: 64px; margin-bottom: 8px; display: block; }
+.card-icon { font-size: 50px; margin-bottom: 4px; display: block; }
 
 /* Outfit name label below the image/icon */
 .card-name { font-size: 15px; font-weight: bold; color: var(--text); line-height: 1.3; }
@@ -663,7 +663,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   /* Fills the full viewport height minus the navbar height (61px) */
   min-height: calc(100vh - 61px);
 
-  padding: 20px 24px;
+  padding: 12px 18px;
   margin: 0 auto;
   max-width: 960px;
   box-sizing: border-box;
