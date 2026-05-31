@@ -57,7 +57,7 @@ There are no erros or warnings on the HTML validations. Below are the validation
 ![HTML-Validation-Home()](assets/images/validations/html.png)
 
 ---
-## 📌Lighthouse Testing
+## 📌Lighthouse Testing 
 
 Lighthouse is a Chrome tool that analyzes my website’s performance, accessibility, best practices, and SEO, and provides scores and recommendations for improvement.
 
