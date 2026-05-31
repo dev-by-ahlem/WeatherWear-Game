@@ -1,79 +1,198 @@
 <!DOCTYPE html>
+<!-- Tells the browser this is a modern HTML5 document -->
+
 <html lang="en" data-dark="0">
+<!-- Root element of the page. lang="en" sets the language to English -->
+<!-- data-dark="0" is a custom attribute used by JS and CSS to track dark/light mode (0 = light mode by default) -->
+
 <head>
+  <!-- The head contains settings and links — nothing visible to the user -->
+
   <meta charset="UTF-8" />
+  <!-- Sets the character encoding to UTF-8 so emojis and special characters display correctly -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Makes the page responsive — it adapts to the screen width of any device (mobile, tablet, desktop) -->
+
   <title>WeatherGame 🌍</title>
+  <!-- Sets the text shown on the browser tab -->
+
+  <link rel="preconnect" href="https://api.open-meteo.com">
+  <!-- Tells the browser to connect to the Open-Meteo weather API early, before it's actually needed — speeds up the first API call -->
+
   <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Links the external CSS file that controls all the visual styling of the game -->
+
 </head>
+
 <body>
+  <!-- Everything inside body is visible on the page -->
+
   <!-- =============================================
        NAVBAR
        ============================================= -->
+
   <nav id="navbar">
-    <div class="nav-logo"><img src="assets/images/logo.png" alt="Weather Wear Game Icon" class="navbar-icon"><span>W</span>eather<span>W</span>ear<span> Game</span></div>
+  <!-- The navigation bar — stays fixed at the top of the page on all screens -->
+
+    <div class="nav-logo">
+      <!-- Left side of the navbar — contains the game logo image and name -->
+
+      <img src="assets/images/logo.png" alt="Weather Wear Game Icon" class="navbar-icon">
+      <!-- The game logo image. alt text is shown if the image fails to load -->
+
+      <span>W</span>eather<span>W</span>ear<span> Game</span>
+      <!-- The game name — the W letters are wrapped in span tags so CSS can colour them with the accent colour -->
+    </div>
+
     <div class="nav-right">
+    <!-- Right side of the navbar — contains the dark/light mode toggle button -->
+
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode">🌙 <strong>Dark</strong></button>
+      <!-- Button that switches between dark and light mode -->
+      <!-- id="theme-toggle" lets JavaScript find and control this button -->
+      <!-- aria-label makes it accessible for screen readers -->
     </div>
   </nav>
 
   <!-- =============================================
        SCREEN 1 — START SCREEN
        ============================================= -->
+  <!-- This is the first screen the player sees when they open the game -->
+
   <div id="screen-start" class="screen">
+  <!-- id="screen-start" lets JavaScript show or hide this screen -->
+  <!-- class="screen" applies the shared screen layout styles from CSS -->
+
     <div class="start-card">
+    <!-- The white card in the centre of the start screen containing all the intro content -->
+
       <div class="start-title">Dress For The Weather<br/><span>— fast! ⚡</span></div>
+      <!-- Main title of the game. <br/> adds a line break. The span colours the subtitle differently -->
+
       <p class="start-sub">Cities appear one by one.<br> You have <strong>3 seconds</strong> to pick the <strong>only one </strong>correct outfit before time runs out!</p>
+      <!-- Short description explaining how the game works to new players -->
+
       <div class="rules-grid">
+      <!-- A 2x2 grid layout showing the 4 game rules -->
+
         <div class="rule-box">⏱️ <strong>45 seconds</strong><br/>Total Game Time</div>
+        <!-- Rule 1: the player has 45 seconds total for the whole game -->
+
         <div class="rule-box">🌍 <strong>Random cities</strong><br/>Appear Each Round</div>
+        <!-- Rule 2: a new random city appears every round -->
+
         <div class="rule-box">✅ <strong>Correct</strong>= +1 pt<br/>❌ <strong>Wrong</strong> = −1 pt</div>
+        <!-- Rule 3: correct answer adds 1 point, wrong answer removes 1 point -->
+
         <div class="rule-box">⏩ <strong>Skip</strong> = 0 pts<br/>Next City Appears</div>
+        <!-- Rule 4: if the player doesn't answer in time, no points are lost or gained -->
       </div>
-      <!-- The class="start-btn": Used for styling in CSS & JS uses this button ID to “find” the button and attach behavior.-->
+
       <button class="start-btn" id="start-btn">▶ Start Game</button>
+      <!-- The main start button. id="start-btn" lets JavaScript detect when it is clicked and launch the game -->
+
       <div class="highscore-row">🏅 Best score: <strong id="highscore-display">0</strong></div>
+      <!-- Shows the player's best score saved from previous games -->
+      <!-- id="highscore-display" lets JavaScript update this number from localStorage -->
     </div>
   </div>
 
   <!-- =============================================
        SCREEN 2 — GAME SCREEN
        ============================================= -->
+  <!-- This is the main game screen — hidden by default, shown when the game starts -->
+
   <div id="screen-game" class="screen" style="display:none">
+  <!-- style="display:none" hides this screen on page load — JavaScript shows it when the game starts -->
+
     <div class="hud">
+    <!-- HUD = Heads Up Display — the top bar showing game info during play -->
+
       <div class="hud-chip">City <strong id="city-count">1</strong></div>
+      <!-- Shows which city number the player is currently on -->
+      <!-- id="city-count" lets JavaScript update the number each round -->
+
       <div class="hud-timer" id="game-timer">45</div>
+      <!-- The circular countdown timer showing seconds remaining -->
+      <!-- id="game-timer" lets JavaScript update and animate the countdown -->
+
       <div class="hud-chip">Score: <strong id="score-display">0</strong></div>
+      <!-- Shows the player's current score during the game -->
+      <!-- id="score-display" lets JavaScript update the score in real time -->
     </div>
+
     <div class="weather-banner">
+    <!-- The banner showing the current city's weather information -->
+
       <div class="banner-emoji" id="banner-emoji">☀️</div>
+      <!-- Large weather emoji (e.g. ☀️ 🌧️ ❄️) — updated by JavaScript each round -->
+
       <div class="banner-info">
+      <!-- Container for the city name and weather description text -->
+
         <div class="banner-city" id="banner-city">Loading...</div>
+        <!-- Displays the city name and country — updated by JavaScript with real data -->
+
         <div class="banner-desc" id="banner-desc">—</div>
+        <!-- Displays the weather description e.g. "Hot & sunny · 34°C" — updated by JavaScript -->
       </div>
+
       <div class="banner-question">What should<br/>you wear?</div>
+      <!-- Static prompt reminding the player what they need to do — hidden on small screens via CSS -->
     </div>
+
     <div class="outfit-grid" id="outfit-grid"></div>
+    <!-- The grid where the 9 outfit cards are displayed each round -->
+    <!-- Starts empty — JavaScript builds and injects the cards dynamically -->
+
     <div class="feedback-bar" id="feedback-bar" style="display:none"></div>
+    <!-- The feedback message bar shown after each answer (correct / wrong / too slow) -->
+    <!-- Starts hidden — JavaScript shows it with the right message and colour after each answer -->
   </div>
 
   <!-- =============================================
        SCREEN 3 — END SCREEN
        ============================================= -->
+  <!-- The final screen shown when the 45 second timer runs out -->
+
   <div id="screen-end" class="screen" style="display:none">
+  <!-- Hidden by default — JavaScript switches to flex to show and centre this screen when the game ends -->
+
     <div class="end-card">
+    <!-- The card containing the final score and end game options -->
+
       <div class="end-big-emoji" id="end-big-emoji">🏆</div>
+      <!-- Large emoji shown based on the player's final score — updated by JavaScript -->
+
       <div class="end-score" id="end-score">0</div>
+      <!-- Displays the player's final score in large text — updated by JavaScript -->
+
       <div class="end-score-label">points scored</div>
+      <!-- Static label underneath the score number -->
+
       <div class="end-message" id="end-message">Well done!</div>
+      <!-- Personalised message based on the score (e.g. "Amazing! You're a weather genius!") -->
+      <!-- id="end-message" lets JavaScript update the message depending on how well the player did -->
+
       <div class="new-highscore" id="new-highscore" style="display:none">🎉 New best score!</div>
+      <!-- Badge that appears only when the player beats their previous best score -->
+      <!-- Hidden by default — JavaScript shows it if the new score is higher than localStorage value -->
+
       <div class="end-buttons">
+      <!-- Container for the two end screen action buttons -->
+
         <button class="btn-primary" id="play-again-btn">▶ Play Again</button>
+        <!-- Restarts the game immediately — JavaScript listens for this click and calls startGame() -->
+
         <button class="btn-secondary" id="home-btn">🏠 Home</button>
+        <!-- Returns the player to screen 1 — JavaScript listens for this click and calls showStart() -->
       </div>
     </div>
   </div>
 
   <script src="assets/js/script.js"></script>
+  <!-- Links the JavaScript file — placed at the bottom so all HTML elements load before the script runs -->
+
 </body>
 </html>
