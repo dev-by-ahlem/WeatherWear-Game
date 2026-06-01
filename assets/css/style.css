@@ -314,7 +314,7 @@ body.weather-mild::before {
 body.weather-mild { background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTJkZmlpcmk3YnNnbDN6aWkyaHZzeDhjNzJwaWJ3eTV6ZG91ZHM3NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dBXNPw0XBdF1n82BBf/giphy.gif'); }
 
 /* Hot/sunny weather GIF */
-body.weather-hot  { background-image: url('https://th.bing.com/th/id/R.ba63ac0eb2349fb7d0af399789498b09?rik=NxxJoq%2bEYEuOew&riu=http%3a%2f%2fclipart-library.com%2fimages%2f5TRrMA4yc.gif&ehk=8ivxhSAUAlWq4R0IsNB2OunXyauHLhoARTf72Jcb8AY%3d&risl=&pid=ImgRaw&r=0'); }
+body.weather-hot  { background-image: url('../images/sunny-weather.gif'); }
 
 /* Cold/freezing weather GIF */
 body.weather-cold { background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmV6bGVrcm1vM2JleG9lcHh6cDJjcHZ5NGdzNjByaDhybnpmajljaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FoVi0LDjy1XS8/giphy.gif'); }
