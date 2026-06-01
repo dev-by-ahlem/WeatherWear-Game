@@ -206,7 +206,7 @@ body {
   letter-spacing: -0.3px;
 }
 
-/* The highlighted part of the logo (e.g. "Weather" in a different colour) */
+/* The highlighted part of the logo coloured with the accent colour */
 .nav-logo span { color: var(--accent); }
 
 /* The right-hand side of the navbar holding the theme toggle button */
@@ -224,7 +224,7 @@ body {
   background: var(--surface2);
   border: 1px solid var(--border);
 
-  /* Pill shape — very high border radius turns it into a rounded button */
+  /* Pill shape */
   border-radius: 99px;
 
   padding: 7px 16px;
@@ -280,13 +280,13 @@ body.weather-cold::before,
 body.weather-rain::before,
 body.weather-snow::before,
 body.weather-mild::before {
-  /* The pseudo-element needs content (even empty) to render */
+  /* The pseudo-element needs content to render */
   content: '';
 
   /* Fixed so it covers the whole viewport regardless of scroll position */
   position: fixed;
 
-  /* Shorthand for top/right/bottom/left: 0 — fills the entire screen */
+  /* Fills the entire screen */
   inset: 0;
 
   /* 55% opaque white overlay to soften the GIF */
@@ -331,16 +331,16 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
    A centred container that limits content width on wide screens.
    ============================================== */
 .screen {
-  /* Max width so content doesn't stretch across ultra-wide screens */
-  max-width: 960px;
+  /* Reduced max width so content does not stretch too wide on GitHub Pages */
+  max-width: 720px;
 
   /* Auto left/right margins centre the container horizontally */
   margin: 0 auto;
 
-  /* Horizontal padding so content doesn't touch screen edges */
-  padding: 0 24px;
+  /* Horizontal padding so content does not touch screen edges */
+  padding: 0 20px;
 
-  /* Ensures this sits above the background GIF overlay (z-index: 0) */
+  /* Ensures this sits above the background GIF overlay */
   position: relative;
   z-index: 1;
 }
@@ -350,13 +350,34 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
    SCREEN 1 — START CARD
    The welcome/intro card shown before the game begins.
    ============================================== */
+
+/* Both the start and end screens use flexbox to vertically centre their card */
+#screen-start,
+#screen-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Fills the full viewport height minus the navbar height */
+  min-height: calc(100vh - 80px);
+
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 720px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Centres all text on the end screen */
+#screen-end { text-align: center; }
+
 .start-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 
-  /* Generous internal spacing so the content breathes */
-  padding: 48px 60px;
+  /* Reduced padding so the card is not too tall on GitHub Pages */
+  padding: 32px 40px;
 
   /* Centres all text inside the card */
   text-align: center;
@@ -370,24 +391,22 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 
 /* Main heading on the start screen */
 .start-title {
-  /* clamp() makes the font size fluid: min 26px, ideal 4vw, max 42px */
-  font-size: clamp(26px, 4vw, 42px);
+  /* clamp() makes the font size fluid: min 22px, ideal 4vw, max 34px */
+  font-size: clamp(22px, 4vw, 34px);
   font-weight: bold;
   color: var(--text);
-  margin-bottom: 14px;
-
-  /* Comfortable line height for multi-line headings */
+  margin-bottom: 12px;
   line-height: 1.3;
 }
 
-/* Accent-coloured word(s) inside the start title */
+/* Accent-coloured word inside the start title */
 .start-title span { color: var(--accent); }
 
 /* Subtitle/description text below the title */
 .start-sub {
-  font-size: 20px;
+  font-size: 17px;
   color: var(--text2);
-  margin-bottom: 28px;
+  margin-bottom: 22px;
   line-height: 1.6;
 }
 
@@ -395,10 +414,8 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 .rules-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  /* 8px gap between the grid cells */
   gap: 8px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 /* Individual rule/info box inside the rules grid */
@@ -406,50 +423,42 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 16px 14px;
-  font-size: 16px;
+  padding: 12px 10px;
+  font-size: 14px;
   color: var(--text2);
   line-height: 1.6;
   transition: background 0.4s, border-color 0.3s;
 }
 
-/* The main "Start Game" button */
+/* The main Start Game button */
 .start-btn {
-  /* Block so it stretches full width */
   display: block;
   width: 100%;
-  padding: 18px;
+  padding: 14px;
   border-radius: var(--radius-sm);
-
-  /* Removes default browser button border */
   border: none;
-
-  /* Uses the brand accent colour as the button fill */
   background: var(--accent);
   color: #fff;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 16px;
-
-  /* Smooth fade on hover */
+  margin-bottom: 14px;
   transition: opacity 0.2s;
   font-family: Arial, sans-serif;
 }
 
-/* Slightly fades the button when hovered for visual feedback */
+/* Slightly fades the button when hovered */
 .start-btn:hover { opacity: 0.88; }
 
 /* The high-score display row at the bottom of the start card */
-.highscore-row { font-size: 18px; color: var(--text2); }
+.highscore-row { font-size: 15px; color: var(--text2); }
 
 
 /* ==============================================
    SCREEN 2 — GAME HUD
-   The heads-up display (score, round, timer) shown during gameplay.
    ============================================== */
 #screen-game {
-  /* Reduced top and bottom spacing so all 9 cards fit on screen without scrolling */
+  /* Compact top and bottom spacing so all 9 cards fit without scrolling */
   padding-top: 16px;
   padding-bottom: 16px;
 }
@@ -458,11 +467,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 .hud {
   display: flex;
   align-items: center;
-
-  /* Pushes chips to the left and right ends with the timer in the middle */
   justify-content: space-between;
-
-  /* Space below the HUD before the weather banner */
   margin-bottom: 10px;
 }
 
@@ -471,171 +476,136 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 11px 20px;
-  font-size: 15px;
+  padding: 9px 16px;
+  font-size: 13px;
   color: var(--text);
   transition: background 0.4s, border-color 0.3s;
 }
 
 /* Circular countdown timer in the centre of the HUD */
 .hud-timer {
-  /* Fixed size circle */
-  width: 64px;
-  height: 64px;
-
-  /* Makes it a circle */
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-
-  /* Uses the accent colour as the timer background */
   background: var(--accent);
   color: #fff;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
-
-  /* Centres the number inside the circle */
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* Smooth colour transition when turning red */
   transition: background 0.3s;
-
-  /* Prevents the circle from being squished by flexbox */
   flex-shrink: 0;
 }
 
-/* When only a few seconds remain, JavaScript adds this class to turn the timer red */
+/* Turns the timer red when few seconds remain */
 .hud-timer.urgent { background: var(--wrong); }
 
 
 /* ==============================================
    WEATHER BANNER
-   Shows the current city, weather emoji, description and the question prompt.
    ============================================== */
 .weather-banner {
-  /* Puts the emoji, city info and question label in a horizontal row */
   display: flex;
   align-items: center;
-  gap: 18px;
-
-  /* Semi-transparent background — lets the background GIF show through slightly */
+  gap: 14px;
   background: var(--banner-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 12px 18px;
   margin-bottom: 10px;
-
-  /* Frosted glass blur effect on the background behind the banner */
   backdrop-filter: blur(4px);
-
   transition: background 0.4s, border-color 0.3s;
 }
 
-/* The weather emoji on the left of the banner — reduced to 52px so all cards fit on one screen without scrolling */
-.banner-emoji  { font-size: 52px; line-height: 1; flex-shrink: 0; }
+/* The weather emoji on the left of the banner */
+.banner-emoji  { font-size: 48px; line-height: 1; flex-shrink: 0; }
 
-/* City name text — bold and prominent */
-.banner-city   { font-size: 20px; font-weight: bold; color: var(--text); }
+/* City name text */
+.banner-city   { font-size: 16px; font-weight: bold; color: var(--text); }
 
-/* Short weather description below the city name (e.g. "Feels like −3°C") */
-.banner-desc   { font-size: 14px; color: var(--text2); margin-top: 4px; }
+/* Short weather description below the city name */
+.banner-desc   { font-size: 12px; color: var(--text2); margin-top: 4px; }
 
 /* The question label pushed to the far right of the banner */
 .banner-question {
-  /* margin-left: auto pushes this element all the way to the right */
   margin-left: auto;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   color: var(--accent);
-
-  /* Right-aligns multi-line question text */
   text-align: right;
   line-height: 1.6;
-
-  /* Prevents it from shrinking when space is tight */
   flex-shrink: 0;
 }
 
 
 /* ==============================================
    OUTFIT CARDS
-   The clickable answer cards showing clothing options.
    ============================================== */
 
 /* 3-column grid of clickable outfit option cards */
 .outfit-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 /* Individual clickable outfit card */
 .outfit-card {
   background: var(--card-bg);
-
-  /* 2px border so the border thickening on correct/wrong is noticeable */
   border: 2px solid var(--border);
   border-radius: var(--radius);
   padding: 10px 8px;
   text-align: center;
   cursor: pointer;
-
-  /* Smooth lift-and-scale animation on hover and state changes */
   transition: transform 0.15s, border-color 0.2s, background 0.2s;
 }
 
 /* Clothing image inside each card */
 .card-img-icon {
-  width: 62px;
-  height: 62px;
-
-  /* Scales image to fit while preserving aspect ratio */
+  width: 56px;
+  height: 56px;
   object-fit: contain;
-
-  /* Centres the image horizontally */
   display: block;
-  margin: 0 auto 8px;
+  margin: 0 auto 6px;
 }
 
-/* Lifts and very slightly enlarges the card when hovered */
+/* Lifts and slightly enlarges the card when hovered */
 .outfit-card:hover {
   transform: translateY(-2px) scale(1.01);
-
-  /* Highlights the border with the accent colour on hover */
   border-color: var(--accent);
 }
 
-/* Applied by JavaScript when the player picks the right outfit */
+/* Applied when the player picks the right outfit */
 .outfit-card.correct { border-color: var(--correct); background: var(--correct-bg); }
 
-/* Applied by JavaScript when the player picks the wrong outfit */
+/* Applied when the player picks the wrong outfit */
 .outfit-card.wrong   { border-color: var(--wrong);   background: var(--wrong-bg); }
 
-/* Disables further clicks after the player has already answered */
+/* Disables further clicks after the player has answered */
 .outfit-card.disabled { cursor: default; pointer-events: none; opacity: 0.8; }
 
 /* Fallback emoji icon used if no image is available */
-.card-icon { font-size: 50px; margin-bottom: 4px; display: block; }
+.card-icon { font-size: 46px; margin-bottom: 4px; display: block; }
 
 /* Outfit name label below the image/icon */
-.card-name { font-size: 15px; font-weight: bold; color: var(--text); line-height: 1.3; }
+.card-name { font-size: 13px; font-weight: bold; color: var(--text); line-height: 1.3; }
 
-/* Short tag or descriptor below the outfit name (e.g. "Formal", "Winter") */
-.card-tag  { font-size: 13px; color: var(--text2); margin-top: 3px; }
+/* Short tag below the outfit name */
+.card-tag  { font-size: 12px; color: var(--text2); margin-top: 2px; }
 
 
 /* ==============================================
    FEEDBACK BAR
-   A coloured bar shown after each answer to tell the player if they were right/wrong/skipped.
    ============================================== */
 .feedback-bar {
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-size: 14px;
+  padding: 10px 14px;
+  font-size: 13px;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 /* Green bar for a correct answer */
@@ -650,88 +620,65 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 
 /* ==============================================
    SCREEN 3 — END SCREEN
-   The results screen shown after all rounds are completed.
    ============================================== */
-
-/* Both the start and end screens use flexbox to vertically centre their card */
-#screen-start,
-#screen-end {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Fills the full viewport height minus the navbar height (61px) */
-  min-height: calc(100vh - 61px);
-
-  padding: 12px 18px;
-  margin: 0 auto;
-  max-width: 960px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-/* Centres all text on the end screen */
-#screen-end { text-align: center; }
 
 /* The results summary card on the end screen */
 .end-card {
   background: var(--end-card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 52px 64px;
 
-  /* Frosted-glass blur on background GIF */
+  /* Reduced padding so the card is not too tall */
+  padding: 32px 40px;
+
   backdrop-filter: blur(4px);
-
   width: 100%;
   transition: background 0.4s, border-color 0.3s;
 }
 
-/* Large emoji displayed at the top of the results (e.g. 🏆 😅) */
-.end-big-emoji   { font-size: 100px; margin-bottom: 16px; display: block; }
+/* Large emoji at the top of the results */
+.end-big-emoji   { font-size: 72px; margin-bottom: 12px; display: block; }
 
-/* The player's final score number (e.g. "7") displayed very large */
-.end-score       { font-size: 96px; font-weight: bold; color: var(--text); line-height: 1; }
+/* The player's final score number displayed large */
+.end-score       { font-size: 72px; font-weight: bold; color: var(--text); line-height: 1; }
 
-/* The label beneath the score number (e.g. "out of 10") */
-.end-score-label { font-size: 22px; color: var(--text2); margin-bottom: 12px; }
+/* The label beneath the score number */
+.end-score-label { font-size: 17px; color: var(--text2); margin-bottom: 10px; }
 
-/* A motivational message shown below the score (e.g. "Well dressed!") */
-.end-message     { font-size: 28px; font-weight: bold; color: var(--accent); margin-bottom: 20px; }
+/* A motivational message shown below the score */
+.end-message     { font-size: 22px; font-weight: bold; color: var(--accent); margin-bottom: 16px; }
 
 /* Gold badge shown only when the player beats their personal best */
 .new-highscore {
   display: inline-block;
-  background: #FFF8DC;         /* Light gold background */
-  border: 1px solid #D4AF37;   /* Gold border */
-  color: #8B6914;              /* Dark gold text */
-  border-radius: 99px;         /* Pill shape */
-  padding: 8px 22px;
-  font-size: 16px;
+  background: #FFF8DC;
+  border: 1px solid #D4AF37;
+  color: #8B6914;
+  border-radius: 99px;
+  padding: 6px 18px;
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 /* Dark mode version of the high-score badge */
 [data-dark="1"] .new-highscore {
-  background: #3A2D00;     /* Dark gold tint background */
+  background: #3A2D00;
   border-color: #8B6914;
-  color: #E09A35;          /* Bright gold text */
+  color: #E09A35;
 }
 
-/* Container for the "Play Again" and "Home" buttons at the bottom */
+/* Container for the Play Again and Home buttons */
 .end-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
-/* Primary action button (e.g. "Play Again") — filled with accent colour */
+/* Primary action button */
 .btn-primary {
-  padding: 16px 40px;
-
-  /* Pill-shaped button */
+  padding: 13px 32px;
   border-radius: 99px;
   border: none;
   background: var(--accent);
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: opacity 0.2s;
@@ -741,93 +688,89 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 /* Fades slightly on hover */
 .btn-primary:hover { opacity: 0.88; }
 
-/* Secondary action button (e.g. "Home") — outlined style */
+/* Secondary action button */
 .btn-secondary {
-  padding: 16px 40px;
+  padding: 13px 32px;
   border-radius: 99px;
-
-  /* Visible outline border instead of a filled background */
   border: 1px solid var(--border);
   background: var(--surface2);
   color: var(--text);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   font-family: Arial, sans-serif;
   transition: background 0.2s;
 }
 
-/* Slightly darkens on hover for visual feedback */
+/* Slightly darkens on hover */
 .btn-secondary:hover { filter: brightness(0.95); }
 
 
 /* ==============================================
    RESPONSIVE DESIGN
    These media queries adapt the layout for smaller screens.
-   They override styles above at specific screen widths (breakpoints).
    ============================================== */
 
 /* Large tablet / small desktop — screens up to 960px wide */
 @media (max-width: 960px) {
-  /* Narrows the max content width so it doesn't look stretched */
-  .screen { max-width: 720px; }
+  /* Narrows the max content width */
+  .screen { max-width: 680px; }
 }
 
 /* Tablet — screens up to 767px wide */
 @media (max-width: 767px) {
-  /* Full width on tablets — no more fixed max-width */
+  /* Full width on tablets */
   .screen              { max-width: 100%; }
 
-  /* Keep 3 columns on tablet — still enough space */
+  /* Keep 3 columns on tablet */
   .outfit-grid         { grid-template-columns: repeat(3, 1fr); }
 
   /* Slightly smaller outfit images */
-  .card-img-icon       { width: 68px; height: 68px; }
+  .card-img-icon       { width: 52px; height: 52px; }
 
   /* Slightly smaller emoji icons */
-  .card-icon           { font-size: 54px; }
+  .card-icon           { font-size: 44px; }
 }
 
 /* Large mobile — screens up to 600px wide */
 @media (max-width: 600px) {
-  /* Switches to 2 columns so cards aren't too small to tap */
+  /* Switches to 2 columns */
   .outfit-grid         { grid-template-columns: repeat(2, 1fr); }
 
-  /* Hides the question label on small screens to save space */
+  /* Hides the question label to save space */
   .banner-question     { display: none; }
 
-  /* Rules stack in a single column on small screens */
+  /* Rules stack in a single column */
   .rules-grid          { grid-template-columns: 1fr; }
 
-  /* Further reduces image sizes */
-  .card-img-icon       { width: 62px; height: 62px; }
-  .card-icon           { font-size: 50px; }
+  .card-img-icon       { width: 56px; height: 56px; }
+  .card-icon           { font-size: 46px; }
 }
 
 /* Small mobile — screens up to 480px wide */
 @media (max-width: 480px) {
-  /* Keeps 2 columns even on small phones */
+  /* Keeps 2 columns on small phones */
   .outfit-grid         { grid-template-columns: repeat(2, 1fr); }
 
   /* Still hide question label */
   .banner-question     { display: none; }
 
-  /* Compact HUD chips for small screens */
+  /* Compact HUD chips */
   .hud-chip            { padding: 8px 12px; font-size: 12px; }
 
-  /* Smaller circular timer to fit on narrow screens */
+  /* Smaller circular timer */
   .hud-timer           { width: 44px; height: 44px; font-size: 18px; }
 
-  /* Stacks the end-screen buttons vertically instead of side by side */
+  /* Stacks the end-screen buttons vertically */
   .end-buttons         { flex-direction: column; align-items: center; }
 
   /* Rules remain single column */
   .rules-grid          { grid-template-columns: 1fr; }
 
-  /* Smallest outfit image sizes for the smallest phones */
-  .card-img-icon       { width: 54px; height: 54px; }
-  .card-icon           { font-size: 44px; }
+  /* Smallest outfit image sizes */
+  .card-img-icon       { width: 48px; height: 48px; }
+  .card-icon           { font-size: 40px; }
 
-  /* Slightly smaller weather emoji to prevent banner overflow */
-  .banner-emoji        { font-size: 52px; }
+  /* Smaller weather emoji to prevent banner overflow */
+  .banner-emoji        { font-size: 40px; }
 }
