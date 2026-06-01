@@ -331,7 +331,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
    A centred container that limits content width on wide screens.
    ============================================== */
 .screen {
-  /* Reduced max width so content does not stretch too wide on GitHub Pages */
+  /* Limits how wide the content gets so it does not stretch across large screens */
   max-width: 720px;
 
   /* Auto left/right margins centre the container horizontally */
@@ -376,7 +376,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   border: 1px solid var(--border);
   border-radius: var(--radius);
 
-  /* Reduced padding so the card is not too tall on GitHub Pages */
+  /* Internal spacing inside the start card — top/bottom and left/right */
   padding: 32px 40px;
 
   /* Centres all text inside the card */
@@ -413,6 +413,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 /* 2-column grid layout for the rules/info boxes */
 .rules-grid {
   display: grid;
+  /* 1fr 1fr means: divide the row into 2 equal slices — each column gets half the space */
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-bottom: 20px;
@@ -458,7 +459,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
    SCREEN 2 — GAME HUD
    ============================================== */
 #screen-game {
-  /* Compact top and bottom spacing so all 9 cards fit without scrolling */
+  /* Adds vertical breathing room above the HUD and below the feedback bar */
   padding-top: 16px;
   padding-bottom: 16px;
 }
@@ -546,6 +547,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 /* 3-column grid of clickable outfit option cards */
 .outfit-grid {
   display: grid;
+  /* repeat(3, 1fr) means: divide the row into 3 equal slices — like cutting a pizza into 3 equal pieces */
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin-bottom: 10px;
@@ -628,7 +630,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   border: 1px solid var(--border);
   border-radius: var(--radius);
 
-  /* Reduced padding so the card is not too tall */
+  /* Internal spacing inside the end card — top/bottom and left/right */
   padding: 32px 40px;
 
   backdrop-filter: blur(4px);
@@ -722,7 +724,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   /* Full width on tablets */
   .screen              { max-width: 100%; }
 
-  /* Keep 3 columns on tablet */
+  /* repeat(3, 1fr) keeps 3 equal columns — enough space on tablet screens */
   .outfit-grid         { grid-template-columns: repeat(3, 1fr); }
 
   /* Slightly smaller outfit images */
@@ -734,13 +736,13 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 
 /* Large mobile — screens up to 600px wide */
 @media (max-width: 600px) {
-  /* Switches to 2 columns */
+  /* repeat(2, 1fr) switches to 2 equal columns — cards would be too small in 3 columns on mobile */
   .outfit-grid         { grid-template-columns: repeat(2, 1fr); }
 
   /* Hides the question label to save space */
   .banner-question     { display: none; }
 
-  /* Rules stack in a single column */
+  /* 1fr means: one single column that takes the full available width — stacks the rule boxes vertically */
   .rules-grid          { grid-template-columns: 1fr; }
 
   .card-img-icon       { width: 56px; height: 56px; }
@@ -749,7 +751,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
 
 /* Small mobile — screens up to 480px wide */
 @media (max-width: 480px) {
-  /* Keeps 2 columns on small phones */
+  /* repeat(2, 1fr) keeps 2 equal columns — each card gets exactly half the screen width */
   .outfit-grid         { grid-template-columns: repeat(2, 1fr); }
 
   /* Still hide question label */
@@ -764,7 +766,7 @@ body.weather-snow { background-image: url('https://www.icegif.com/wp-content/upl
   /* Stacks the end-screen buttons vertically */
   .end-buttons         { flex-direction: column; align-items: center; }
 
-  /* Rules remain single column */
+  /* 1fr means: one single column taking the full width — rule boxes stack vertically on small screens */
   .rules-grid          { grid-template-columns: 1fr; }
 
   /* Smallest outfit image sizes */
