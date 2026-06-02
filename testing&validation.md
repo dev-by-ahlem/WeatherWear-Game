@@ -6,7 +6,6 @@
 
 📝 Manual testing was carried out on all three screens to verify that every interactive element works correctly.
 
-
 🔘 Screen 1 — Start Screen
 
 - The Start Game button was tested and successfully launches the game. 
@@ -55,6 +54,12 @@ I also validated each of my HTML files using the [W3C Validation Service](https:
 There are no erros or warnings on the HTML validations. Below are the validation results for my HTML pages.
 
 ![HTML-Validation-Home()](assets/images/validations/html.png)
+
+### Java Script 
+I also validated my Java Script file using the [JS Validation Service](https://eslint.org/).
+There is one error which I mentioned in the readme file. Below, you find the validation result for my JS page.
+
+![JS-Validation()](assets/images/validations/js-test.png)
 
 ---
 ## 📌Lighthouse Testing 
