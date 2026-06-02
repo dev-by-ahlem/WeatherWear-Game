@@ -311,19 +311,19 @@ body.weather-mild::before {
 
 /* Individual GIF URLs assigned to each weather class */
 /* Mild/breezy weather GIF */
-body.weather-mild { background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTJkZmlpcmk3YnNnbDN6aWkyaHZzeDhjNzJwaWJ3eTV6ZG91ZHM3NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dBXNPw0XBdF1n82BBf/giphy.gif'); }
+body.weather-mild { background-image: url('../images/mild-weather.gif'); }
 
 /* Hot/sunny weather GIF */
 body.weather-hot  { background-image: url('../images/sunny-weather.gif'); }
 
 /* Cold/freezing weather GIF */
-body.weather-cold { background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmV6bGVrcm1vM2JleG9lcHh6cDJjcHZ5NGdzNjByaDhybnpmajljaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FoVi0LDjy1XS8/giphy.gif'); }
+body.weather-cold { background-image: url('../images/cold-weather.gif'); }
 
 /* Rainy weather GIF */
-body.weather-rain { background-image: url('https://i.pinimg.com/originals/99/b2/32/99b232976a51bfb16e19de1c2003e611.gif'); }
+body.weather-rain { background-image: url('../images/rainy-weather.gif'); }
 
 /* Snowy weather GIF */
-body.weather-snow { background-image: url('https://www.icegif.com/wp-content/uploads/2023/09/icegif-656.gif'); }
+body.weather-snow { background-image: url('../images/snowy-weather.gif'); }
 
 
 /* ==============================================
