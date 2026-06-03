@@ -289,7 +289,7 @@ const newHighscore = document.getElementById('new-highscore');
 
 // Load the saved high score from localStorage when the page first opens.
 // localStorage.getItem returns null if nothing is saved, so || 0 defaults to 0.
-highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
+highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;//Show the saved high score, but if there isn’t one yet, show 0
 
 
 // ==============================================
@@ -429,7 +429,7 @@ function resetState() {
   nextCityData = null;
 
   // Stop any running timers to prevent them overlapping with the new game
-  if (gameTimerID)  clearInterval(gameTimerID);
+  if (gameTimerID)  clearInterval(gameTimerID);// built in function that stops a timer when given its ID
   if (roundTimerID) clearInterval(roundTimerID);
 
   // Remove all weather background classes from the body
@@ -744,7 +744,7 @@ function endGame() {
 
   // Show a different emoji and message depending on how well the player did
   if (score >= 8) {
-    endBigEmoji.textContent = '🏆';
+    endBigEmoji.textContent = '🌞';
     endMessage.textContent  = "Amazing! You're a weather genius!";
   } else if (score >= 5) {
     endBigEmoji.textContent = '⛅';
@@ -762,9 +762,9 @@ function endGame() {
 
   // If the player beat the high score, save it and show the gold badge
   if (score > best) {
+    endBigEmoji.textContent = '🏆';
     // Save the new high score to localStorage so it persists between sessions
     localStorage.setItem('wgHS', score);
-
     // Update the high score display on the start screen
     highscoreDisplay.textContent = score;
 
