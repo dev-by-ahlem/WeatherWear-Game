@@ -140,6 +140,34 @@ const OUTFITS = {
 //  and convert it into a simple type string the game can use.
 // ==============================================
 
+// Fetches live weather data for a given city from the Open-Meteo API.
+// "async" means this function runs in the background without freezing the page.
+async function fetchWeather(city) {
+  // Builds the API URL using the city's latitude and longitude
+  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
+
+  // Sends the HTTP request and waits for the response
+  const response = await fetch(url);// fetch means downnload data from an url and store it in response 
+  // Converts the API JSON response into a json object we can work with
+    const data = await response.json();
+  // Rounds the temperature to a whole number
+  const temp = Math.round(data.current_weather.temperature);
+
+  // Reads the WMO weather condition code
+  const code = data.current_weather.weathercode;
+
+  // Converts the code + temperature into our simplified game type
+  const type = getWeatherType(code, temp);
+
+  // Returns a neat object with everything the game needs
+  return {
+    type:  type,
+    temp:  temp,
+    emoji: getWeatherEmoji(type),
+    desc:  getWeatherDesc(type, temp)
+  };
+}
+
 // Converts a WMO weather code + temperature into one of five game types.
 // Weather codes are standard numbers the Open-Meteo API returns
 // (e.g. 61 = rain, 71 = snow, etc.)
@@ -172,35 +200,7 @@ function getWeatherDesc(type, temp) {
   if (type === "mild") return "Mild & cloudy · " + temp + "°C";
 }
 
-// Fetches live weather data for a given city from the Open-Meteo API.
-// "async" means this function runs in the background without freezing the page.
-async function fetchWeather(city) {
-  // Builds the API URL using the city's latitude and longitude
-  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
 
-  // Sends the HTTP request and waits for the response
-  const response = await fetch(url);
-
-  // Parses the JSON response body into a usable JavaScript object
-  const data = await response.json();
-
-  // Rounds the temperature to a whole number
-  const temp = Math.round(data.current_weather.temperature);
-
-  // Reads the WMO weather condition code
-  const code = data.current_weather.weathercode;
-
-  // Converts the code + temperature into our simplified game type
-  const type = getWeatherType(code, temp);
-
-  // Returns a neat object with everything the game needs
-  return {
-    type:  type,
-    temp:  temp,
-    emoji: getWeatherEmoji(type),
-    desc:  getWeatherDesc(type, temp)
-  };
-}
 
 
 // ==============================================
