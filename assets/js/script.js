@@ -166,6 +166,7 @@ async function fetchWeather(city) {
     emoji: getWeatherEmoji(type),
     desc:  getWeatherDesc(type, temp)
   };
+  console.log("Weather:", city.name, temp, code);
 }
 
 // Converts a WMO weather code + temperature into one of five game types.
@@ -758,7 +759,7 @@ function endGame() {
   }
 
   // Read the current high score from localStorage (defaults to 0 if not set)
-  let best = parseInt(localStorage.getItem('wgHS') || 0);
+  let best = parseInt(localStorage.getItem('wgHS') || 0);//js function that converts a string to a number. localStorage only stores strings, so we need to convert it back to a number to compare with the player's score.
 
   // If the player beat the high score, save it and show the gold badge
   if (score > best) {
