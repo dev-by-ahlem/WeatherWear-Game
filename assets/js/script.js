@@ -601,22 +601,23 @@ function buildCards() {
     return k !== currentWeather.type;
   });
 
-  // Build a flat pool of all outfits from the wrong categories
+  // Build an array of all outfits from the wrong categories
   let wrongPool = [];
-  wrongKeys.forEach(function (k) {
-    OUTFITS[k].forEach(function (outfit) {
-      // Tag each outfit with its category key so we can check answers later
+  wrongKeys.forEach(function (k) { //loops through the wrong weather types
+    OUTFITS[k].forEach(function (outfit) {//nestead loop to iterate through each outfit in those wrong types
+    // Store outfit + it's weather key together 
       wrongPool.push({ key: k, outfit: outfit });
     });
+    // Now we have an array (wrongPool) with objects like { key: "rain", outfit: { icon: "🌂", name: "Brolly", tag: "Rainy day 🌧️" }
   });
 
-  // Shuffle the pool and take only as many wrong cards as we need
-  const wrongItems = shuffle(wrongPool).slice(0, CARDS_PER_ROUND - 1);
+  // Shuffle the array and take the first 8 wrong cards (from 0 to 9 minus 1)
+  const wrongItems = shuffle(wrongPool).slice(0, CARDS_PER_ROUND - 1);// 
 
   // Combine the 1 correct card with the wrong ones, then shuffle everything together
   const allCards = shuffle([
-    { key: currentWeather.type, outfit: correctOutfit },
-    ...wrongItems  // "..." spreads the array items into the outer array
+    { key: currentWeather.type, outfit: correctOutfit },//one obj that contains the correct outfit
+    ...wrongItems  // "..." spreads the array that contains the wrong items into the outer array which contains 1 correct item
   ]);
 
   // Create a DOM card element for each item and add it to the grid
@@ -636,12 +637,12 @@ function buildCards() {
       '<div class="card-name">'  + item.outfit.name + '</div>'  +
       '<div class="card-tag">'   + item.outfit.tag  + '</div>';
 
-    // When this card is clicked, run checkAnswer with the card's key and the element
+    // When this card is clicked, run checkAnswer with the card's key(type of weather) and the element (outfit)
     card.addEventListener('click', function () {
       checkAnswer(item.key, card);
     });
 
-    // Add the finished card to the grid on screen
+    // Add the finished card to the grid on screen as child element
     outfitGrid.appendChild(card);
   });
 }
@@ -681,12 +682,11 @@ function checkAnswer(clickedKey, clickedCard) {
   } else {
     // Wrong answer — subtract 1 from score
     score--;
-
     // Also highlight the clicked card in red to show the mistake
     clickedCard.classList.add('wrong');
     showFeedback('wrong', '❌ Wrong! −1 point — Correct: ' + correctOutfit.name);
   }
-
+  
   // Update the score display in the HUD
   scoreDisplay.textContent = score;
 
@@ -717,9 +717,9 @@ function handleSkip() {
   // Show a neutral "too slow" message
   showFeedback('skip', '⏱ Too slow! — Correct: ' + correctOutfit.name);
 
-  // After 1.2 seconds, move to the next city (if time hasn't run out)
-  setTimeout(function () {
-    if (timeLeft > 0) showNextCity();
+  // start a delay of 1.2 s start a delay.After the delay finishes, run the code inside.”
+  setTimeout(function () { //Built in func for delay
+    if (timeLeft > 0) showNextCity();//Check if the game is still running:Load the next city and start a new round.”
   }, 1200);
 }
 

@@ -323,7 +323,7 @@ body.weather-cold { background-image: url('../images/cold-weather.gif'); }
 body.weather-rain { background-image: url('../images/rainy-weather.gif'); }
 
 /* Snowy weather GIF */
-body.weather-snow { background-image: url('../images/snowy-weather.gif'); }
+body.weather-snow { background-image: url('../images/snowy.gif'); }
 
 
 /* ==============================================
