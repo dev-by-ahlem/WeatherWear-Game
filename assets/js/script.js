@@ -1,23 +1,19 @@
-// ==============================================
-//  WEATHERWEAR GAME — script.js
-//  Main game logic: data, API calls, timer,
-//  card building, scoring and screen control.
-// ==============================================
-
 
 // ==============================================
 //  SECTION 1: CITY LIST
-//  Each city object holds a display name, country label with flag emoji,
-//  and latitude/longitude coordinates used to fetch real weather data.
 // ==============================================
+// Clear the saved high score from localStorage for testing purposes
+//localStorage.removeItem("wgHS");
+
 const CITIES = [
  
   // --- Hot / Warm cities ---
-  // These cities are reliably hot year-round — API will return "hot" naturally
+  
   { name: "Dubai",        country: "UAE 🇦🇪",          lat: 25.2,  lon: 55.3   },
   { name: "Cairo",        country: "Egypt 🇪🇬",         lat: 30.1,  lon: 31.2   },
   { name: "Mumbai",       country: "India 🇮🇳",         lat: 19.1,  lon: 72.9   },
   { name: "Bangkok",      country: "Thailand 🇹🇭",      lat: 13.8,  lon: 100.5  },
+  { name: "Tunis",        country: "Tunisia 🇹🇳",       lat: 36.8,  lon: 10.2   },
   { name: "Riyadh",       country: "Saudi Arabia 🇸🇦",  lat: 24.7,  lon: 46.7   },
   { name: "Lagos",        country: "Nigeria 🇳🇬",       lat: 6.5,   lon: 3.4    },
   { name: "Doha",         country: "Qatar 🇶🇦",         lat: 25.3,  lon: 51.5   },
@@ -29,7 +25,7 @@ const CITIES = [
   { name: "Lahore",       country: "Pakistan 🇵🇰",      lat: 31.5,  lon: 74.3   },
  
   // --- Cold / Wet cities ---
-  // These cities vary between cold, mild and rain depending on season
+  
   { name: "Moscow",       country: "Russia 🇷🇺",        lat: 55.8,  lon: 37.6   },
   { name: "Oslo",         country: "Norway 🇳🇴",        lat: 59.9,  lon: 10.7   },
   { name: "Helsinki",     country: "Finland 🇫🇮",       lat: 60.2,  lon: 25.0   },
@@ -49,6 +45,7 @@ const CITIES = [
   // These cities are known to be snowy but the live API often returns
   // mild or rain codes for them, especially outside peak winter.
   // forcedType guarantees the game always treats them as snow.
+
   { name: "Rovaniemi",    country: "Finland 🇫🇮",       lat: 66.5,  lon: 25.7,  forcedType: "snow" },
   { name: "Sapporo",      country: "Japan 🇯🇵",         lat: 43.1,  lon: 141.3, forcedType: "snow" },
   { name: "Harbin",       country: "China 🇨🇳",         lat: 45.8,  lon: 126.5, forcedType: "snow" },
@@ -64,15 +61,11 @@ const CITIES = [
 
 // ==============================================
 //  SECTION 2: OUTFIT DATA
-//  Each weather type ("hot", "cold", "rain", "snow", "mild") has an array
-//  of outfit objects. Each outfit has:
-//    icon — emoji or an <img> tag pointing to a local image asset
-//    name — the outfit display name shown on the card
-//    tag  — the weather label shown beneath the name
 // ==============================================
+
 const OUTFITS = {
 
-  // Outfits correct for hot weather
+  // Outfits for hot weather
   hot: [
     { icon: "🩳",  name: "Shorts",        tag: "Hot weather ☀️" },
     { icon: "👗",  name: "Summer Dress",  tag: "Hot weather ☀️" },
@@ -85,7 +78,7 @@ const OUTFITS = {
     { icon: "🧢",  name: "Cap",           tag: "Hot weather ☀️" },
   ],
 
-  // Outfits correct for cold weather
+  // Outfits for cold weather
   cold: [
     { icon: "👖",  name: "Jeans",         tag: "Cold weather ❄️" },
     { icon: "<img src='assets/images/icons-outfits/coat.webp'         class='card-img-icon' loading='lazy'>", name: "Winter coat",    tag: "Cold weather ❄️" },
@@ -99,7 +92,7 @@ const OUTFITS = {
     { icon: "<img src='assets/images/icons-outfits/winter-hat.webp'   class='card-img-icon' loading='lazy'>", name: "Winter Hat",     tag: "Cold weather ❄️" },
   ],
 
-  // Outfits correct for rainy weather
+  // Outfits for rainy weather
   rain: [
     { icon: "🌂",  name: "Brolly",             tag: "Rainy day 🌧️" },
     { icon: "☂️",  name: "Umbrella",           tag: "Rainy day 🌧️" },
@@ -110,7 +103,7 @@ const OUTFITS = {
     { icon: "<img src='assets/images/icons-outfits/rain-hat.webp'          class='card-img-icon' loading='lazy'>", name: "Rain Hat",          tag: "Rainy day 🌧️" },
   ],
 
-  // Outfits correct for snowy weather
+  // Outfits for snowy weather
   snow: [
     { icon: "<img src='assets/images/icons-outfits/snow-suit.webp'      class='card-img-icon' loading='lazy'>", name: "Snow Suit",  tag: "Snowy day ⛄" },
     { icon: "<img src='assets/images/icons-outfits/snow-gloves.webp'    class='card-img-icon' loading='lazy'>", name: "Snow Gloves",tag: "Snowy day ⛄" },
@@ -120,7 +113,7 @@ const OUTFITS = {
     { icon: "<img src='assets/images/icons-outfits/snow-boots.webp'     class='card-img-icon' loading='lazy'>", name: "Snow Boots", tag: "Snowy day ⛄" },
   ],
 
-  // Outfits correct for mild/overcast weather
+  // Outfits for mild/overcast weather
   mild: [
     { icon: "🧥",  name: "Light jacket",  tag: "Mild weather ⛅" },
     { icon: "👟",  name: "Trainers",      tag: "Mild weather ⛅" },
@@ -135,79 +128,8 @@ const OUTFITS = {
 
 
 // ==============================================
-//  SECTION 3: WEATHER API — Open-Meteo (free, no API key needed)
-//  These functions interpret raw weather data from the API
-//  and convert it into a simple type string the game can use.
-// ==============================================
-
-// Fetches live weather data for a given city from the Open-Meteo API.
-// "async" means this function runs in the background without freezing the page.
-async function fetchWeather(city) {
-  // Builds the API URL using the city's latitude and longitude
-  const url = "https://api.open-meteo.com/v1/forecast?latitude=" + city.lat + "&longitude=" + city.lon + "&current_weather=true";
-
-  // Sends the HTTP request and waits for the response
-  const response = await fetch(url);// fetch means downnload data from an url and store it in response 
-  // Converts the API JSON response into a json object we can work with
-    const data = await response.json();
-  // Rounds the temperature to a whole number
-  const temp = Math.round(data.current_weather.temperature);
-
-  // Reads the WMO weather condition code
-  const code = data.current_weather.weathercode;
-
-  // Converts the code + temperature into our simplified game type
-  const type = getWeatherType(code, temp);
-
-  // Returns a neat object with everything the game needs
-  return {
-    type:  type,
-    temp:  temp,
-    emoji: getWeatherEmoji(type),
-    desc:  getWeatherDesc(type, temp)
-  };
-  console.log("Weather:", city.name, temp, code);
-}
-
-// Converts a WMO weather code + temperature into one of five game types.
-// Weather codes are standard numbers the Open-Meteo API returns
-// (e.g. 61 = rain, 71 = snow, etc.)
-function getWeatherType(code, temp) {
-  // WMO codes for snow and blizzard conditions → "snow"
-  if ([71, 72, 73, 74, 75, 76, 77, 85, 86].includes(code)) return "snow";
-
-  // WMO codes for drizzle, rain, showers and storms → "rain"
-  if ([51, 52, 53, 55, 56, 57, 61, 62, 63, 64, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(code)) return "rain";
-
-  // Temperature-based fallback when there is no rain or snow code
-  if (temp >= 20) return "hot";   // 20°C and above = hot
-  if (temp >= 10) return "mild";  // 10–19°C = mild
-  return "cold";                  // Below 10°C = cold
-}
-
-// Returns the display emoji for each weather type
-function getWeatherEmoji(type) {
-  // A lookup object — the key is the type string, the value is the emoji
-  const emojis = { hot: "☀️", cold: "🥶", rain: "🌧️", snow: "❄️", mild: "⛅" };
-  return emojis[type];
-}
-
-// Builds the short weather description shown under the city name in the banner
-function getWeatherDesc(type, temp) {
-  if (type === "hot")  return "Hot & sunny · "   + temp + "°C";
-  if (type === "cold") return "Cold weather · "  + temp + "°C";
-  if (type === "rain") return "Rainy · "         + temp + "°C";
-  if (type === "snow") return "Snowing · "       + temp + "°C";
-  if (type === "mild") return "Mild & cloudy · " + temp + "°C";
-}
-
-
-
-
-// ==============================================
-//  SECTION 4: GAME CONSTANTS
+//  SECTION 3: GAME CONSTANTS
 //  Fixed values that control how the game behaves.
-//  Changing these numbers adjusts the difficulty.
 // ==============================================
 
 // Total seconds the player has for one full game session
@@ -215,12 +137,12 @@ const GAME_DURATION = 45;
 
 // How many outfit cards are shown per round (1 correct + 8 wrong distractors)
 const CARDS_PER_ROUND = 9;
-
+// winner sound
+const soundWin = new Audio('../assets/images/winner-sound.mp3');
 
 // ==============================================
-//  SECTION 5: GAME STATE
+//  SECTION 4: GAME Variables
 //  Variables that change as the game runs.
-//  They track score, timers, and the current question.
 // ==============================================
 
 // Player's current score (increases on correct, decreases on wrong)
@@ -255,7 +177,7 @@ let nextCityData = null;
 
 
 // ==============================================
-//  SECTION 6: DOM REFERENCES
+//  SECTION 5: DOM REFERENCES
 //  Grabbing HTML elements once and storing them in variables.
 //  This is faster than calling getElementById repeatedly.
 // ==============================================
@@ -291,6 +213,127 @@ const newHighscore = document.getElementById('new-highscore');
 // Load the saved high score from localStorage when the page first opens.
 // localStorage.getItem returns null if nothing is saved, so || 0 defaults to 0.
 highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;//Show the saved high score, but if there isn’t one yet, show 0
+
+
+
+// ==============================================
+//  SECTION 21: BUTTON EVENT LISTENERS
+//  Connects each button in the HTML to the correct game function.
+//  These run once when the page loads and stay active the whole time.
+// ==============================================
+
+// "Start Game" button on the home/start screen
+document.getElementById('start-btn').addEventListener('click', function () {
+  startGame();
+});
+
+// "Play Again" button on the end/results screen
+document.getElementById('play-again-btn').addEventListener('click', function () {
+  startGame();
+});
+
+// "Home" button on the end/results screen — returns to the start screen
+document.getElementById('home-btn').addEventListener('click', function () {
+  // Remove any weather background GIF class left over from the game
+  document.body.className = '';
+
+  // Refresh the high score display in case it was updated this session
+  highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
+
+  // Show the start screen
+  showStart();
+});
+
+// ==============================================
+//  SECTION 6: WEATHER API — Open-Meteo (free, no API key needed)
+//  These functions interpret raw weather data from the API
+//  and convert it into a simple type string that the game can use.
+// ==============================================
+
+// Fetches live weather data for a given city from the Open-Meteo API.
+// "async" means this function runs in the background without freezing the page.
+async function fetchWeather(city) {
+
+  // Wrap everything in try/catch to prevent crashes if the API fails
+  try {
+
+    // Builds the API URL using the city's latitude and longitude
+    const url =
+      "https://api.open-meteo.com/v1/forecast?latitude=" +
+      city.lat +
+      "&longitude=" +
+      city.lon +
+      "&current_weather=true";
+
+    // Sends the HTTP request and waits for the response
+    // fetch = download data from the URL and store it in "response"
+    const response = await fetch(url);
+
+    // Converts the API JSON response (which is a string) into a real JS object
+    const data = await response.json();
+
+    // Rounds the temperature to the nearest whole number
+    const temp = Math.round(data.current_weather.temperature);
+
+    // Reads the WMO weather condition code
+    const code = data.current_weather.weathercode;
+
+    // Converts the code + temperature into our simplified game type
+    const type = getWeatherType(code, temp);
+
+    // Returns an object with everything the game needs
+    return {
+      type:  type,
+      temp:  temp,
+      emoji: getWeatherEmoji(type),
+      desc:  getWeatherDesc(type, temp)
+    };
+
+  } catch (err) {
+
+    // If ANYTHING goes wrong (no internet, API down, invalid JSON...)
+    console.error("Weather API failed:", err);
+
+    // Return a safe fallback so the game continues
+    return {
+      type:  "unknown",
+      temp:  0,
+      emoji: "❓",
+      desc:  "Weather unavailable"
+    };
+  }
+}
+
+// Converts a WMO weather code + temperature into one of five game types.
+
+function getWeatherType(code, temp) {
+  // WMO codes for snow  condition → "snow"
+  if ([71, 72, 73, 74, 75, 76, 77, 85, 86].includes(code)) return "snow";
+
+  // WMO codes for drizzle, rain, showers and storms → "rain"
+  if ([51, 52, 53, 55, 56, 57, 61, 62, 63, 64, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(code)) return "rain";
+
+  // Temperature-based fallback when there is no rain or snow code
+  if (temp >= 20) return "hot";   // 20°C and above = hot
+  if (temp >= 10) return "mild";  // 10–19°C = mild
+  return "cold";                  // Below 10°C = cold
+}
+
+// Returns the display emoji for each weather type
+function getWeatherEmoji(type) {
+  // A lookup object — the key is the type string, the value is the emoji
+  const emojis = { hot: "☀️", cold: "🥶", rain: "🌧️", snow: "❄️", mild: "⛅" };
+  return emojis[type];
+}
+
+// Builds the short weather description shown under the city name in the banner
+function getWeatherDesc(type, temp) {
+  if (type === "hot")  return "Hot & sunny · "   + temp + "°C";
+  if (type === "cold") return "Cold weather · "  + temp + "°C";
+  if (type === "rain") return "Rainy · "         + temp + "°C";
+  if (type === "snow") return "Snowing · "       + temp + "°C";
+  if (type === "mild") return "Mild & cloudy · " + temp + "°C";
+}
 
 
 // ==============================================
@@ -337,28 +380,28 @@ function showGame() {
   screenEnd.style.display   = 'none';
 }
 
-// Shows the end/results screen and hides the others
 function showEnd() {
   screenStart.style.display = 'none';
   screenGame.style.display  = 'none';
-  screenEnd.style.display   = 'flex';  // flex so its card stays vertically centred
-}
+  screenEnd.style.display   = 'flex';
 
+  // Clear all background classes
+  document.body.className = '';
+}
 
 // ==============================================
 //  SECTION 9: HELPER FUNCTIONS
 //  Small reusable utilities used throughout the game.
 // ==============================================
 
-// Returns a single random element from any array
+// Returns a random element from any index
 function pickRandom(arr) {
-  // Math.random() gives a decimal between 0 and 1.
-  // Multiplying by arr.length and flooring gives a valid random index.
-  return arr[Math.floor(Math.random() * arr.length)];
+  // returns an element of a random index from an array.
+  return arr[Math.floor(Math.random() * arr.length)];//code between [] is a random index
 }
 
 // Returns a new shuffled copy of an array without changing the original.
-// Uses the Fisher-Yates algorithm — a reliable standard shuffle method.
+// Uses the Fisher-Yates algorithm to shuufle the array
 function shuffle(arr) {
   // Spread into a new array so we don't mutate the original
   let copy = [...arr];
@@ -538,7 +581,7 @@ async function showNextCity() {
     feedbackBar.style.display = 'none';  // Hide the loading message once data arrives
   }
 
-  // Uncomment the line below during development to debug weather data in the console:
+  // Test to debug weather data in the console:
   // console.log(currentCity.name, '| temp:', currentWeather.temp, '| code from API gives type:', currentWeather.type);
 
   // Start loading the next city in the background while the player answers
@@ -731,77 +774,84 @@ function handleSkip() {
 //  Shows the results screen with score, message and high-score logic.
 // ==============================================
 function endGame() {
-  // Stop the round timer in case a round was still active
-  clearInterval(roundTimerID);
 
-  // Remove the weather background GIF class
-  document.body.className = '';
+  // Stop the main game timer if it exists
+  if (gameTimerID)  clearInterval(gameTimerID);
 
-  // Switch to the end/results screen
+  // Stop the round timer if it exists
+  if (roundTimerID) clearInterval(roundTimerID);
+
+  // Switch the UI to show Screen 3 (end screen)
   showEnd();
 
-  // Display the player's final score
+  // Display the final score of this round
   endScore.textContent = score;
 
-  // Show a different emoji and message depending on how well the player did
-  if (score >= 8) {
-    endBigEmoji.textContent = '🌞';
-    endMessage.textContent  = "Amazing! You're a weather genius!";
-  } else if (score >= 5) {
-    endBigEmoji.textContent = '⛅';
-    endMessage.textContent  = 'Not bad! Keep practising 👕';
-  } else if (score >= 2) {
-    endBigEmoji.textContent = '🌧️';
-    endMessage.textContent  = 'You got soaked! Try again 😅';
-  } else {
-    endBigEmoji.textContent = '⛈️';
-    endMessage.textContent  = 'A total storm! Needs more practice 😬';
-  }
+  // Get the saved high score from localStorage (convert from string to number)
+  let highscore = Number(localStorage.getItem('wgHS')) || 0;
 
-  // Read the current high score from localStorage (defaults to 0 if not set)
-  let best = parseInt(localStorage.getItem('wgHS') || 0);//js function that converts a string to a number. localStorage only stores strings, so we need to convert it back to a number to compare with the player's score.
+  // Check if the current score is higher than the saved high score
+  let isNewHigh = score > highscore;
 
-  // If the player beat the high score, save it and show the gold badge
-  if (score > best) {
-    endBigEmoji.textContent = '🏆';
-    // Save the new high score to localStorage so it persists between sessions
+  // If the player achieved a new high score
+  if (isNewHigh) {
+
+    // Save the new high score in localStorage
     localStorage.setItem('wgHS', score);
-    // Update the high score display on the start screen
-    highscoreDisplay.textContent = score;
 
-    // Show the "New High Score!" badge
-    newHighscore.style.display = 'inline-block';
+    // Add the confetti background effect
+    document.body.classList.add('confetti-bg');
+
+    // Show the "new high score" message
+    newHighscore.style.display = 'block';
+
+    // Display the trophy emoji
+    endBigEmoji.textContent = "🏆";
+
+    // Play the winning sound
+    soundWin.play();
+
   } else {
-    // Hide the badge if no new record was set
+    // Hide the "new high score" message if no new record
     newHighscore.style.display = 'none';
   }
+
+  // PERFORMANCE MESSAGE (always shown, even with a new high score)
+  if (score >= 8) {
+
+    // Set the message for excellent performance
+    endMessage.textContent = "Amazing! You're a weather genius!";
+
+    // Only change the emoji if it's NOT a new high score
+    if (!isNewHigh) endBigEmoji.textContent = '🌞';
+
+  } else if (score >= 5) {
+
+    // Set the message for good performance
+    endMessage.textContent = 'Not bad! Keep practising 👕';
+
+    // Only change the emoji if it's NOT a new high score
+    if (!isNewHigh) endBigEmoji.textContent = '⛅';
+
+  } else if (score >= 2) {
+
+    // Set the message for low performance
+    endMessage.textContent = 'You got soaked! Try again 😅';
+
+    // Only change the emoji if it's NOT a new high score
+    if (!isNewHigh) endBigEmoji.textContent = '🌧️';
+
+  } else {
+
+    // Set the message for very low performance
+    endMessage.textContent = 'A total storm! Needs more practice 😬';
+
+    // Only change the emoji if it's NOT a new high score
+    if (!isNewHigh) endBigEmoji.textContent = '⛈️';
+  }
+
+  // Update the high score displayed on the start screen
+  highscoreDisplay.textContent = localStorage.getItem('wgHS');
 }
 
 
-// ==============================================
-//  SECTION 21: BUTTON EVENT LISTENERS
-//  Connects each button in the HTML to the correct game function.
-//  These run once when the page loads and stay active the whole time.
-// ==============================================
-
-// "Start Game" button on the home/start screen
-document.getElementById('start-btn').addEventListener('click', function () {
-  startGame();
-});
-
-// "Play Again" button on the end/results screen
-document.getElementById('play-again-btn').addEventListener('click', function () {
-  startGame();
-});
-
-// "Home" button on the end/results screen — returns to the start screen
-document.getElementById('home-btn').addEventListener('click', function () {
-  // Remove any weather background GIF class left over from the game
-  document.body.className = '';
-
-  // Refresh the high score display in case it was updated this session
-  highscoreDisplay.textContent = localStorage.getItem('wgHS') || 0;
-
-  // Show the start screen
-  showStart();
-});

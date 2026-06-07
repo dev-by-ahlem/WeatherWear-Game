@@ -707,7 +707,13 @@ body.weather-snow { background-image: url('../images/snowy.gif'); }
 /* Slightly darkens on hover */
 .btn-secondary:hover { filter: brightness(0.95); }
 
-
+/* background for confetti animation on end screen celebrations*/
+.confetti-bg {
+  background-image: url("https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWQydXhrdXlxOTgyMnFzOWF1NXN4MTljbG9saHQwMzRpbDNpNXdnayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JC2WK24DFMLNS/giphy.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /* ==============================================
    RESPONSIVE DESIGN
    These media queries adapt the layout for smaller screens.
