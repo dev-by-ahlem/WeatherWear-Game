@@ -498,6 +498,15 @@ function startGame() {
   // Begin the 45-second countdown
   startGameTimer();
 
+  // Unlock audio on the first user click so sound works on GitHub Pages.
+  // Browsers block sounds that play without a user interaction first.
+  // This trick plays the sound silently for 0 seconds on the Start click,
+  // which tells the browser "the user has interacted — allow audio".
+  // After this, soundWin.play() will work anywhere including GitHub Pages.
+  soundWin.play().catch(function() {}); // play silently — .catch() ignores any error
+  soundWin.pause();                     // stop it immediately so player hears nothing
+  soundWin.currentTime = 0;            // rewind back to the start ready for later
+
   // Load and display the first city/question
   showNextCity();
 }
