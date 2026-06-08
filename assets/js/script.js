@@ -3,7 +3,7 @@
 //  SECTION 1: CITY LIST
 // ==============================================
 // Clear the saved high score from localStorage for testing purposes
- //localStorage.removeItem("wgHS");
+localStorage.removeItem("wgHS");
 
 const CITIES = [
  
